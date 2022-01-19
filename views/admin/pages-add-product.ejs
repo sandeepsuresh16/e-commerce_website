@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Components / Accordion - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/admin/assets/img/favicon.png" rel="icon">
+  <link href="/admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
+  <link href="https://unpkg.com/cropperjs/dist/cropper.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+  <script src="https://unpkg.com/dropzone"></script>
+  <script src="https://unpkg.com/cropperjs"></script>
+  <!-- Template Main CSS File -->
+  <link href="/admin/assets/css/style.css" rel="stylesheet">
+  <style>
+    .preview {
+      overflow: hidden;
+      width: 160px;
+      height: 160px;
+      margin: 10px;
+      border: 1px solid red;
+    }
+
+    .modal-lg {
+      max-width: 1000px !important;
+    }
+  </style>
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.1.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/admin/home" class="logo d-flex align-items-center">
+        <img src="/admin/assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Wolmart</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <!-- <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li> -->
+        <!-- End Search Icon-->
+
+
+
+
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <!-- <img src="/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+            <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/user">
+          <i class="bi bi-person"></i>
+          <span>User</span>
+        </a>
+
+      </li><!-- End Forms Nav -->
+
+
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/products">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Products</span>
+        </a>
+
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/category">
+          <i class="bi bi-diagram-3-fill"></i><span>Category</span>
+        </a>
+
+      </li><!-- End Charts Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/order">
+          <i class="bi bi-journal-text"></i><span>Orders</span>
+        </a>
+
+      </li><!-- End Icons Nav -->
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gift-fill"></i><span>Offer Management</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/offer-category">
+              <i class="bi bi-circle"></i><span>Category Offer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/offer-product">
+              <i class="bi bi-circle"></i><span>Product Offer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/coupon">
+              <i class="bi bi-circle"></i><span>Coupon</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/report">
+              <i class="bi bi-circle"></i><span>Page-1</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+
+
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>PRODUCTS</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/products">Product</a></li>
+          <li class="breadcrumb-item">Add-Product</li>
+
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- <div class="col-12 mt-2 p-2">
+              <h4 style="color: #fff;">ADD PRODUCT</h4>
+          </div> -->
+
+        <div class="col-md-6 bg-light  shadow p-3 mb-5 bg-body">
+          <form onsubmit="return validateform()" action="/admin/products/add" method="post"
+            enctype="multipart/form-data" id="myform">
+            <div class="container">
+
+
+              <label for="productName" class="form-label"></label><b>Product Name</b></label>
+              <input style="width: 100%; border-width: 1px;  border-radius:10px; padding-left: 5px;" type="text"
+                id="productName" name="productName" class="form-label" placeholder="Product name">
+
+
+              <label for="brand" class="form-label"></label><b>Brand Name</b></label>
+              <input style="width:100%;  border-width: 1px; border-radius:10px; padding-left: 5px;" type="text"
+                id="brand" name="brand" class="form-label" placeholder="brand name">
+
+
+
+
+              <label for="category" class="form-label"></label><b>Select a Category</b></label>
+
+              <select style="width: 100%;  border-width: 1px; padding: 3px;  border-radius:10px; padding-left: 5px; color: black;"
+                onchange="getCat()" name="category" id="category">
+                <option value="">select</option>
+                <%for(var i=0; i<data.length;i++){%>
+
+                  <option value="<%=data[i].categoryName%>">
+                    <%=data[i].categoryName%>
+                  </option>
+                  <%}%>
+              </select>
+
+
+              <label for=""><b>select sub category</b></label>
+              <select style="width: 100%; border-width: 1px; padding: 3px; border-radius:10px; padding-left: 5px; color: black;"
+                name="subCategory" id="subcategory">
+                <option value="">select</option>
+              </select>
+
+
+
+              <label for="description" class="form-label"></label><b>Product Description</b></label>
+              <input style="width: 100%; border-width: 1px;  border-radius:10px; padding-left: 5px;" type="text"
+                id="description" name="description" class="form-label" placeholder="description">
+
+
+
+
+              <label for="price" class="form-label"></label><b>Price</b></label>
+              <input style="width: 100%;  border-radius:10px;  border-width: 1px; padding-left: 5px;" type="number"
+                id="price" name="price" class="form-label" placeholder="price" min="1">
+
+
+              <label for="quantity" class="form-label"></label><b>Quantity</b></label>
+              <input style="width: 100%;  border-radius:10px; border-width: 1px; padding-left: 5px;" type="number"
+                id="quantity" name="quantity" class="form-label" placeholder="quantity" min="1">
+              <label><b>Upload Product Images</b></label>
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12">
+
+                    <div class="fileinput fileinput-new text-center">
+                      <div class="row">
+                        <div class="col-7">
+                          <span class="btn btn-rose btn-round btn-file">
+
+                            <input type="file" id="image1" onchange="imageChange(event,1)"
+                              accept="image/gif, image/jpeg, image/png"  name="img1" />
+                            <textarea name="image1" id="imageValue1" cols="30" rows="10" hidden></textarea>
+                          </span>
+                        </div>
+                        <div class="fileinput-new thumbnail col-5">
+                          <img width="100px" src="" id="chekPreview1"
+                            style=" display: inline; background: url(/public/background-image.jpg);">
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="fileinput fileinput-new text-center">
+                      <div class="row">
+                        <div class="col-7">
+                          <span class="btn btn-rose btn-round btn-file">
+
+                            <input type="file" id="image2" onchange="imageChange(event,2)"
+                              accept="image/gif, image/jpeg, image/png"  name="img2" />
+                            <textarea name="image2" id="imageValue2" cols="30" rows="10" hidden></textarea>
+                          </span>
+                        </div>
+                        <div class="fileinput-new thumbnail col-5">
+                          <img src="" width="100px" id="chekPreview2">
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+
+                    <div class="fileinput fileinput-new text-center">
+                      <div class="row">
+                        <div class="col-7">
+                          <span class="btn btn-rose btn-round btn-file">
+
+                            <input type="file" id="image3" onchange="imageChange(event,3)"
+                              accept="image/gif, image/jpeg, image/png"  name="img3" />
+                            <textarea name="image3" id="imageValue3" cols="30" rows="10" hidden></textarea>
+                          </span>
+                        </div>
+                        <div class="fileinput-new thumbnail col-5">
+                          <img src=""  width="100px" id="chekPreview3">
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+
+                    <div class="fileinput fileinput-new text-center">
+                      <div class="row">
+                        <div class="col-7">
+                          <span class="btn btn-rose btn-round btn-file">
+                            
+                            <input type="file" id="image4" onchange="imageChange(event,4)"
+                              accept="image/gif, image/jpeg, image/png"  name="img4" />
+                            <textarea name="image4" id="imageValue4" cols="30" rows="10" hidden></textarea>
+                          </span>
+                        </div>
+                        <div class="fileinput-new thumbnail col-7">
+                          <img src="" id="chekPreview4" width="100px">
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                </div>
+              </div>
+
+
+              <button class="btn btn-success" type="submit">Add Product</button>
+
+
+
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main><!-- End #main -->
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span></span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+
+
+  <!-- Vendor JS Files -->
+  <script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="/admin/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/admin/assets/vendor/quill/quill.min.js"></script>
+  <script src="/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/admin/assets/vendor/chart.js/chart.min.js"></script>
+  <script src="/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/admin/assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+
+
+
+  <script>
+    $(document).ready(function () {
+      $('#myform').validate({
+
+        rules: {
+          productName: {
+            required: true,
+            minlength: 4
+          },
+          brand: {
+            required: true,
+            minlength: 3
+          },
+          category: {
+            required: true
+
+          },
+          subcategory: required,
+          price: {
+            required: true,
+            number: true,
+            min: 1
+          },
+          description: {
+            required: true,
+            minlength: 5
+          },
+          file1: required,
+          file2: required,
+          file3: required,
+          file4: require
+        },
+        message: {
+          productName: {
+            minlength: 'minimum 4 characters',
+            required: 'please enter a name for this product'
+          },
+          brand: {
+            minlength: 'minimum 3 characters',
+            required: 'please enter a brand name'
+          },
+          description: {
+            required: 'Enter the product description',
+            minlength: 'minimum 5 characters'
+
+          }
+        }
+      })
+    })
+  </script>
+
+  <script>
+    function imageChange(event, no) {
+      var fileInput =
+        document.getElementById('image' + no);
+
+      var filePath = fileInput.value;
+
+      // Allowing file type
+      var allowedExtensions =
+        /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+      if (!allowedExtensions.exec(filePath)) {
+        fileInput.value = '';
+        Swal.fire('Invalid input format')
+        return false;
+      }
+
+    }
+
+  </script>
+
+  <script>
+    function getCat() {
+      let category = $('#category').val()
+
+      $.ajax({
+        url: '/admin/getSubCategory',
+        method: "post",
+        data: { category: category },
+        success: (data) => {
+          console.log('data in ajax:', data);
+          $('#subcategory').find('option').remove()
+
+          for (var i = 0; i < data.length; i++) {
+            $('#subcategory').append('<option>' + data[i] + '</option>')
+          }
+        }
+      })
+    }
+  </script>
+  <script>
+ function validateform() {
+
+
+
+let productname = $('#productName').val()
+let producttitle = $('#brand').val()
+let productdiscription = $('#description').val()
+let productprice = $('#price').val()
+let productquantity = $('#quantity').val()
+// let productsize = $('#product_size').val()
+// let productcolour = $('#product_colour').val()
+let productcategory = $('#category').val()
+let productsubcategory = $('#subCategory').val()
+
+// product name
+let productNameError = true;
+
+function validateProductName() {
+
+  let productname = $('#productName').val()
+  if (productname.length == '') {
+
+    $('#productName').css('border-color', '#f30000')
+    $('#productName').attr("placeholder", "Enter Product Name")
+    productNameError = false;
+    return false;
+
+  }
+}
+
+// product Title
+let productTitleError = true;
+
+function validateProductTitle() {
+
+  let producttitle  = $('#brand').val()
+  if (producttitle.length == '') {
+
+    $('#brand').css('border-color', '#f30000')
+    $('#brand').attr("placeholder", "Enter Brand")
+    productTitleError = false;
+    return false;
+  }
+}
+// product discription
+let productDisError = true;
+
+function validateProductDiscription() {
+
+  let productdiscription = $('#description').val()
+  if (productdiscription.length == '') {
+
+    $('#description').css('border-color', '#f30000')
+    $('#description').attr("placeholder", "Enter Product Details")
+    productDisError = false;
+    return false;
+
+  }
+}
+
+// product price
+let productPriceError = true;
+
+function validateProductPrice() {
+
+  let regnum = new RegExp("^[0-9 ]+$");
+  let productprice = $('#price').val()
+  if (productprice.length == '') {
+
+    $('#price').css('border-color', '#f30000')
+    $('#price').attr("placeholder", "Enter Price")
+    productPriceError = false;
+    return false;
+
+  } else if (!regnum.test(productprice)) {
+
+    $('#price').css('border-color', '#f30000')
+    $("#price").text('Enter Number Only')
+
+
+    productPriceError = false;
+  }
+}
+
+// product quantity
+let productQuantityError = true;
+
+function validateProducQuantity() {
+
+  let regnum = new RegExp("^[0-9 ]+$");
+  let productquantity = $('#quantity').val()
+  if (productquantity.length == '') {
+
+    $('#quantity').css('border-color', '#f30000')
+    $('#quantity').attr("placeholder", "Enter Quantity")
+    productQuantityError = false;
+    return false;
+
+  } else if (!regnum.test(productquantity)) {
+
+    $('#quantity').css('border-color', '#f30000')
+    $("#quantity").text('Enter Number Only')
+
+    product2000QuantityError = false;
+  }
+}
+// product size
+// let productSizeError = true;
+
+// function validateProducSize() {
+
+//   let productsize = $('#product_size').val()
+//   if (productsize.length == '') {
+
+//     $('#product_size').css('border-color', '#f30000')
+//     $('#product_size').attr("placeholder", "Enter Size")
+//     productSizeError = false;
+//     return false;
+
+//   }
+// }
+// product colour
+// let productColourError = true;
+
+// function validateProducColour() {
+
+//   let productcolour = $('#product_colour').val()
+//   if (productcolour.length == '') {
+
+//     $('#product_colour').css('border-color', '#f30000')
+//     $('#product_colour').attr("placeholder", "Enter Colour")
+//     productSizeError = false;
+//     return false;
+
+//   }
+// }
+// product category
+let productCategoryError = true;
+
+function validateProducCategory() {
+
+  let productcategory = $('#category').val()
+  if (productcategory == '') {
+
+    $('#category').css('border-color', '#f30000')
+    $('#category').attr("placeholder", "Select Category")
+    productCategoryError = false;
+    return false;
+
+  }
+}
+// product subCategory
+let productSubCategoryError = true;
+
+function validateProducSubCategory() {
+
+  let productsubcategory = $('#subCategory').val()
+  if (productsubcategory == ' ') {
+
+    $('#subCategory').css('border-color', '#f30000')
+    $('#subCategory').attr("placeholder", "Select SubCategory")
+    productSubCategoryError = false;
+    return false;
+
+  }
+}
+
+// image-1
+let image1Error = true;
+
+function validateImage1() {
+
+  let image1 = $('#imageValue1').val()
+  if (image1 == '') {
+
+    $('#image1').css('border-color', '#f30000')
+    $('#image1').attr("placeholder", "Select image-1")
+    image1Error = false;
+    
+    return false;
+
+  }
+}
+//imge-2
+let image2Error = true;
+
+function validateImage2() {
+
+let image2 = $('#imageValue2').val()
+if (image2 == '') {
+
+  $('#image2').css('border-color', '#f30000')
+  $('#image2').attr("placeholder", "Select image-2")
+  image2Error = false;
+  
+  return false;
+
+}
+}
+
+//image-3
+function validateImage3() {
+
+let image3= $('#imageValue3').val()
+if (image3 == '') {
+
+  $('#image3').css('border-color', '#f30000')
+  $('#image3').attr("placeholder", "Select image-3")
+  image3Error = false;
+  
+  return false;
+
+}
+}
+
+//image-4
+function validateImage4() {
+
+let image4= $('#imageValue4').val()
+if (image4 == '') {
+
+  $('#image4').css('border-color', '#f30000')
+  $('#image4').attr("placeholder", "Select image-4")
+  image4Error = false;
+  
+  return false;
+
+}
+}
+validateProductTitle()
+validateProductName()
+validateProductDiscription()
+validateProductPrice()
+validateProducQuantity()
+// validateProducSize()
+// validateProducColour()
+validateProducCategory()
+validateProducSubCategory()
+validateImage1()
+validateImage2()
+validateImage3()
+validateImage4()
+
+if (productNameError === true && productTitleError === true && productDisError === true && productPriceError === true && productQuantityError === true && image1Error===true && image2Error===true && image3Error===true && image4Error===true) {
+
+  return true
+
+} else {
+  Swal.fire('Please fill all the fields and upload all 4 images')
+  return false
+}
+}
+  </script>
+  <script>
+    $('document').ready(function () {
+      //modal1 and image 1
+      var image1 = document.getElementById('sampleImage1');
+
+
+      var modal1 = $('#modal1');
+      var cropper1;
+
+      $('#image1').change(function (event) {
+        var files = event.target.files;
+
+        var done = function (url) {
+          image1.src = url;
+          modal1.modal('show');
+        };
+
+        if (files && files.length > 0) {
+          reader = new FileReader();
+          reader.onload = function (event) {
+            done(reader.result);
+          };
+          reader.readAsDataURL(files[0]);
+        }
+      });
+
+      modal1.on('shown.bs.modal', function () {
+        cropper1 = new Cropper(image1, {
+          aspectRatio: 8 / 9,
+          viewMode: 0,
+          preview: '#preview1'
+        });
+      }).on('hidden.bs.modal', function () {
+        cropper1.destroy();
+        cropper1 = null;
+      });
+
+      $('#crop1').click(function () {
+        canvas = cropper1.getCroppedCanvas({
+          width: 800,
+          height: 900
+        });
+
+        canvas.toBlob(function (blob) {
+          url = URL.createObjectURL(blob);
+          var reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = function () {
+            var base64data = reader.result;
+            modal1.modal('hide');
+            $("#imageValue1").val(base64data)
+            $('#chekPreview1').attr('src', base64data);
+          };
+        });
+      });
+      //modal1 and image 1 end
+
+      //modal2 and image 2
+      var image2 = document.getElementById('sampleImage2');
+      var modal2 = $('#modal2');
+      var cropper2;
+
+      $('#image2').change(function (event) {
+        var files = event.target.files;
+
+        var done = function (url) {
+          image2.src = url;
+          modal2.modal('show');
+        };
+
+        if (files && files.length > 0) {
+          reader = new FileReader();
+          reader.onload = function (event) {
+            done(reader.result);
+          };
+          reader.readAsDataURL(files[0]);
+        }
+      });
+
+      modal2.on('shown.bs.modal', function () {
+        cropper2 = new Cropper(image2, {
+          aspectRatio: 8 / 9,
+          viewMode: 0,
+          preview: '#preview2'
+        });
+      }).on('hidden.bs.modal', function () {
+        cropper2.destroy();
+        cropper2 = null;
+      });
+
+      $('#crop2').click(function () {
+        canvas = cropper2.getCroppedCanvas({
+          width: 800,
+          height: 900
+        });
+
+        canvas.toBlob(function (blob) {
+          url = URL.createObjectURL(blob);
+          var reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = function () {
+            var base64data = reader.result;
+            modal2.modal('hide');
+            $("#imageValue2").val(base64data)
+            $('#chekPreview2').attr('src', base64data);
+          };
+        });
+      });
+      //image 2 and modal 2 end
+
+
+      //modal3 and image 3 start
+      var image3 = document.getElementById('sampleImage3');
+      var modal3 = $('#modal3');
+      var cropper3;
+
+      $('#image3').change(function (event) {
+        var files = event.target.files;
+
+        var done = function (url) {
+          image3.src = url;
+          modal3.modal('show');
+        };
+
+        if (files && files.length > 0) {
+          reader = new FileReader();
+          reader.onload = function (event) {
+            done(reader.result);
+          };
+          reader.readAsDataURL(files[0]);
+        }
+      });
+
+      modal3.on('shown.bs.modal', function () {
+        cropper3 = new Cropper(image3, {
+          aspectRatio: 8 / 9,
+          viewMode: 0,
+          preview: '#preview3'
+        });
+      }).on('hidden.bs.modal', function () {
+        cropper3.destroy();
+        cropper3 = null;
+      });
+
+      $('#crop3').click(function () {
+        canvas = cropper3.getCroppedCanvas({
+          width: 800,
+          height: 900
+        });
+
+        canvas.toBlob(function (blob) {
+          url = URL.createObjectURL(blob);
+          var reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = function () {
+            var base64data = reader.result;
+            modal3.modal('hide');
+            $("#imageValue3").val(base64data)
+            $('#chekPreview3').attr('src', base64data);
+          };
+        });
+      });
+      //image 3 and modal 3 end
+
+      //modal4 and image 4 start
+      var image4 = document.getElementById('sampleImage4');
+      var modal4 = $('#modal4');
+      var cropper4;
+
+      $('#image4').change(function (event) {
+        var files = event.target.files;
+
+        var done = function (url) {
+          image4.src = url;
+          modal4.modal('show');
+        };
+
+        if (files && files.length > 0) {
+          reader = new FileReader();
+          reader.onload = function (event) {
+            done(reader.result);
+          };
+          reader.readAsDataURL(files[0]);
+        }
+      });
+
+      modal4.on('shown.bs.modal', function () {
+        cropper4 = new Cropper(image4, {
+          aspectRatio: 8/9,
+          viewMode: 0,
+          preview: '#preview4'
+        });
+      }).on('hidden.bs.modal', function () {
+        cropper4.destroy();
+        cropper4 = null;
+      });
+
+      $('#crop4').click(function () {
+        canvas = cropper4.getCroppedCanvas({
+          width: 800,
+          height: 900
+        });
+
+        canvas.toBlob(function (blob) {
+          url = URL.createObjectURL(blob);
+          var reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = function () {
+            var base64data = reader.result;
+            modal4.modal('hide');
+            $("#imageValue4").val(base64data)
+            $('#chekPreview4').attr('src', base64data);
+          };
+        });
+      })
+    });
+
+  </script>
+
+  <!-- Modal 1-->
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crop Image Here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="img-container">
+            <div class="row">
+              <div class="col-md-8">
+                <img src="" id="sampleImage1" />
+              </div>
+              <div class="col-md-4">
+                <div class="preview" id="preview1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" id="crop1" class="btn btn-primary">Crop</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal  1 end-->
+
+
+
+  <!-- Modal 2-->
+  <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crop Image Here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="img-container">
+            <div class="row">
+              <div class="col-md-8">
+                <img src="" id="sampleImage2" />
+              </div>
+              <div class="col-md-4">
+                <div class="preview" id="preview2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" id="crop2" class="btn btn-primary">Crop</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal  2 end-->
+
+
+  <!-- Modal 3-->
+  <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crop Image Here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="img-container">
+            <div class="row">
+              <div class="col-md-8">
+                <img src="" id="sampleImage3" />
+              </div>
+              <div class="col-md-4">
+                <div class="preview" id="preview3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" id="crop3" class="btn btn-primary">Crop</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal  3 end-->
+
+  <!-- Modal 4-->
+  <div class="modal fade" id="modal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crop Image Here</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="img-container">
+            <div class="row">
+              <div class="col-md-8">
+                <img src="" id="sampleImage4" />
+              </div>
+              <div class="col-md-4">
+                <div class="preview" id="preview4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" id="crop4" class="btn btn-primary">Crop</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal  4 end-->
+</body>
+
+</html>

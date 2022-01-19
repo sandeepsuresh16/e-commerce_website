@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from portotheme.com/html/wolmart/shop-banner-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Nov 2021 04:59:23 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Wolmart-eCart</title>
+
+    <meta name="keywords" content="ecommerce" />
+    <meta name="description" content="e-cart.">
+    <meta name="sandeep" content="ecart">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/user/assets/images/icons/favicon.png">
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/fonts/wolmart87d5.woff?png09e" as="font" type="font/woff"
+        crossorigin="anonymous">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/animate/animate.min.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/user/assets/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/nouislider/nouislider.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/style.min.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header header-border">
+            <div class="header-top">
+                <div class="container">
+
+
+                </div>
+            </div>
+            <!-- End of Header Top -->
+
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left">
+                        <a href="/" class="logo ml-lg-0">
+                            <img src="/user/assets/images/demos/demo10/header-logo.png" alt="logo" width="145"
+                                height="45" />
+                        </a>
+                    </div>
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
+                        </a>
+                        <form method="get" action="#"
+                            class="header-search hs-rounded d-none d-md-flex ml-4 ml-lg-0 input-wrapper">
+                            <input type="text" class="form-control" name="search" id="search" placeholder="Search..."
+                                required />
+                            <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- End of Header Left -->
+
+                    <!-- <div class="header-center">
+                        <a href="demo10.html" class="logo ml-lg-0">
+                            <img src="/user/assets/images/demos/demo10/header-logo.png" alt="logo" width="145" height="45" />
+                        </a>
+                    </div> -->
+                    <!-- End of Header Center -->
+
+                    <div class="header-right">
+                        <a class="wishlist label-down link d-xs-show" href="/login">
+
+                            <% if(logged){%>
+                                <i class="fas fa-user"></i>
+                                <%= data.name%>
+                                    <%}%>
+                                        <% if(!logged){%>
+                                            <h4><a href="/signup-otp-page">signup</a></h4>
+                                            <%}%>
+                        </a>
+                        <% if(logged){%>
+                            <a class="wishlist label-down link d-xs-show" href="wishlist.html">
+                                <i class="fas fa-heart"></i>
+                                <span class="wishlist-label d-lg-show">Wishlist</span>
+                            </a>
+
+                            <div class="dropdown cart-dropdown cart-offcanvas mr-0 mr-lg-2">
+                                <div class="cart-overlay"></div>
+                                <a href="#" class="cart-toggle label-down link">
+                                    <i class="fas fa-shopping-cart">
+                                        <!-- <span class="cart-count">2</span> -->
+                                    </i>
+                                    <span class="cart-label">Cart</span>
+                                </a>
+                                <!-- End of Dropdown Box -->
+                            </div>
+                            <%}%>
+                    </div>
+                    <!-- End of Header Right -->
+                </div>
+            </div>
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header">
+                <div class="container">
+                    <div class="inner-wrap">
+                        <div class="header-left">
+                            <div class="dropdown category-dropdown has-border" data-visible="true">
+                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true" data-display="static"
+                                    title="Browse Categories">
+                                    <i class="w-icon-category"></i>
+                                    <span>Browse Categories</span>
+                                </a>
+
+                                <div class="dropdown-box">
+                                    <ul class="menu vertical-menu category-menu">
+                                        <!-- <li>
+                                            <a href="shop-fullwidth-banner.html">
+                                                <i class="w-icon-tshirt2"></i>Fashion
+                                            </a>
+                                            
+                                        </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <nav class="main-nav">
+                                <ul class="menu active-underline">
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="/shop">Shop</a>
+
+                                        <!-- Start of Megamenu -->
+                                        <!-- <ul class="megamenu">
+                                            <li>
+                                                <h4 class="menu-title">Shop Pages</h4>
+                                                <ul>
+                                                    <li><a href="shop-banner-sidebar.html">Banner With Sidebar</a></li>
+                                                    <li><a href="shop-boxed-banner.html">Boxed Banner</a></li>
+                                                    <li><a href="shop-fullwidth-banner.html">Full Width Banner</a></li>
+                                                    <li><a href="shop-horizontal-filter.html">Horizontal Filter<span
+                                                                class="tip tip-hot">Hot</span></a></li>
+                                                    <li><a href="shop-off-canvas.html">Off Canvas Sidebar<span
+                                                                class="tip tip-new">New</span></a></li>
+                                                    <li><a href="shop-infinite-scroll.html">Infinite Ajax Scroll</a>
+                                                    </li>
+                                                    <li><a href="shop-right-sidebar.html">Right Sidebar</a></li>
+                                                    <li><a href="shop-both-sidebar.html">Both Sidebar</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <h4 class="menu-title">Shop Layouts</h4>
+                                                <ul>
+                                                    <li><a href="shop-grid-3cols.html">3 Columns Mode</a></li>
+                                                    <li><a href="shop-grid-4cols.html">4 Columns Mode</a></li>
+                                                    <li><a href="shop-grid-5cols.html">5 Columns Mode</a></li>
+                                                    <li><a href="shop-grid-6cols.html">6 Columns Mode</a></li>
+                                                    <li><a href="shop-grid-7cols.html">7 Columns Mode</a></li>
+                                                    <li><a href="shop-grid-8cols.html">8 Columns Mode</a></li>
+                                                    <li><a href="shop-list.html">List Mode</a></li>
+                                                    <li><a href="shop-list-sidebar.html">List Mode With Sidebar</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <h4 class="menu-title">Product Pages</h4>
+                                                <ul>
+                                                    <li><a href="product-variable.html">Variable Product</a></li>
+                                                    <li><a href="product-featured.html">Featured &amp; Sale</a></li>
+                                                    <li><a href="product-accordion.html">Data In Accordion</a></li>
+                                                    <li><a href="product-section.html">Data In Sections</a></li>
+                                                    <li><a href="product-swatch.html">Image Swatch</a></li>
+                                                    <li><a href="product-extended.html">Extended Info</a>
+                                                    </li>
+                                                    <li><a href="product-without-sidebar.html">Without Sidebar</a></li>
+                                                    <li><a href="product-video.html">360<sup>o</sup> &amp; Video<span
+                                                                class="tip tip-new">New</span></a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <h4 class="menu-title">Product Layouts</h4>
+                                                <ul>
+                                                    <li><a href="product-default.html">Default<span
+                                                                class="tip tip-hot">Hot</span></a></li>
+                                                    <li><a href="product-vertical.html">Vertical Thumbs</a></li>
+                                                    <li><a href="product-grid.html">Grid Images</a></li>
+                                                    <li><a href="product-masonry.html">Masonry</a></li>
+                                                    <li><a href="product-gallery.html">Gallery</a></li>
+                                                    <li><a href="product-sticky-info.html">Sticky Info</a></li>
+                                                    <li><a href="product-sticky-thumb.html">Sticky Thumbs</a></li>
+                                                    <li><a href="product-sticky-both.html">Sticky Both</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul> -->
+                                        <!-- End of Megamenu -->
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+
+    <div class="row justify-content-center" style="min-height: 70vh;">
+        <div class="col-md-3 mt-5 pb-5 shadow p-3 mb-5 bg-body rounded border ps-5">
+            <div class="row pt-3 text-center">
+                <h5>LOGIN</h5>
+                <h4 class="text-danger">
+                    <%=status%>
+                </h4>
+            </div>
+            <form action="/signin" method="post" onsubmit=" return validateForm()">
+
+                <div class="mb-3 mt-3 pl-5 pr-5">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                    <small id="emailvalid" class="form-text text-muted invalid-feedback">Your email must be a valid
+                        email</small>
+                </div>
+                <div class="mb-3 pl-5 pr-5">
+                    <label for="pwd" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password"
+                        name="password">
+                    <p id="passcheck" style="color: red;"></p>
+                </div>
+                <div class="pl-5">
+                    <button type="submit" class="btn btn-primary" id="submitbtn">Login</button>
+                </div>
+                <div class="row pt-3 pl-5 pr-5">
+                    <a href="/otp-login">Login With OTP</a>
+                </div>
+                <div class="row pt-3 pl-5 pr-5">
+                    <a href="/signup-otp-page">Create New User</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--FOOTER-->
+    <footer class="footer appear-animate" data-animation-options="{
+        'name': 'fadeIn'
+    }">
+        <div class="footer-newsletter bg-primary">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="icon-box-content text-center col-12">
+
+                        <h5 style="color: #fff;">© Copyright . All Rights Reserved</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Start of Sticky Footer -->
+    <div class="sticky-footer sticky-content fix-bottom">
+        <a href="/" class="sticky-link active">
+            <i class="w-icon-home"></i>
+            <p>Home</p>
+        </a>
+        <a href="/shop" class="sticky-link">
+            <i class="w-icon-category"></i>
+            <p>Shop</p>
+        </a>
+
+    </div>
+    <!-- End of Sticky Footer -->
+    <!-- Start of Mobile Menu -->
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-menu-overlay"></div>
+        <!-- End of .mobile-menu-overlay -->
+
+        <a href="#" class="mobile-menu-close"><i class="close-icon"></i></a>
+        <!-- End of .mobile-menu-close -->
+
+        <div class="mobile-menu-container scrollable">
+            <form action="/product_search" method="post" class="input-wrapper">
+                <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search"
+                    required />
+                <button class="btn btn-search" type="submit">
+                    <i class="w-icon-search"></i>
+                </button>
+            </form>
+            <!-- End of Search Form -->
+            <div class="tab">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a href="#main-menu" class="nav-link active">Main Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#categories" class="nav-link">Categories</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="main-menu">
+                    <ul class="mobile-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/logout">logout</a></li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="categories">
+                    <ul class="mobile-menu">
+                        <%for(var i=0; i<category.length;i++){%>
+                            <li>
+                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                    <%=category[i].categoryName.toUpperCase()%>
+                                </a>
+                            </li>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Mobile Menu -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+
+    <!-- Plugin JS File -->
+    <script src="/user/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/user/assets/vendor/sticky/sticky.js"></script>
+    <script src="/user/assets/vendor/jquery.plugin/jquery.plugin.min.js"></script>
+    <script src="/user/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/user/assets/vendor/nouislider/nouislider.min.js"></script>
+    <script src="/user/assets/vendor/jquery.countdown/jquery.countdown.min.js"></script>
+    <script src="/user/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="/user/assets/vendor/zoom/jquery.zoom.js"></script>
+    <script src="/user/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="/user/assets/js/main.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script>
+        function validateForm() {
+
+            let emailError = true;
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            function validateEmail() {
+                let emailval = $('#email').val()
+                if (emailval == "") {
+                    $('#email').css('border-color', '#f30000')
+                    $('#email').attr("placeholder", "Enter the email ID")
+                    emailError = false;
+                    return false
+                }
+                if (!emailReg.test(emailval)) {
+                    $('#email').css('border-color', '#f30000')
+                    $('#email').attr("placeholder", "Enter valid email id")
+                    emailError = false
+                    return false
+                }
+            }
+
+            let passwordError = true
+            function validatePassword() {
+                let passwordval=$('#password').val()
+                if(passwordval ==""){
+                    $('#password').css('border-color', '#f30000')
+                    $('#password').attr("placeholder", "Enter password")
+                    passwordError=false
+                    return false
+                }
+
+            }
+
+            validatePassword()
+            validateEmail()
+
+            if(emailError===true &&passwordError===true){
+                return true
+            }else{
+                return false
+            }
+
+        }
+    </script>
+</body>
+
+</html>

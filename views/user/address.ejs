@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from portotheme.com/html/wolmart/my-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Nov 2021 04:58:48 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Wolmart-eCart</title>
+
+    <meta name="keywords" content="ecommerce" />
+    <meta name="description" content="e-cart.">
+    <meta name="sandeep" content="ecart">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/user/assets/images/icons/favicon.png">
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/fonts/wolmart87d5.woff?png09e" as="font" type="font/woff"
+        crossorigin="anonymous">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/user/assets/vendor/swiper/swiper-bundle.min.css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/style.min.css">
+</head>
+
+<body class="my-account">
+    <div class="page-wrapper">
+        <!-- Start of Header -->
+        <header class="header">
+
+            <!-- End of Header Top -->
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
+                        </a>
+                        <a href="/" class="logo ml-lg-0">
+                            <img src="/user/assets/images/logo.png" alt="logo" width="144" height="45" />
+                        </a>
+                        <form method="post" action="/search"
+                            class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                            <div class="select-box">
+                                <select id="category" name="category">
+                                    <option value="">All Categories</option>
+                                    <%for(var i=0; i<category.length;i++){%>
+                                        <option value="<%=category[i].categoryName.toUpperCase()%>">
+                                            <%=category[i].categoryName.toUpperCase()%>
+                                        </option>
+                                        <%}%>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control" name="search" id="search" placeholder="Search in..."
+                                required />
+                            <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="header-right ml-4">
+                        <% if(logged){%>
+                            <a class="wishlist label-down link d-xs-show" href="/account">
+                                <i class="fas fa-user"></i>
+                                <span class="wishlist-label d-lg-show">
+                                    <%= data.name%>
+                                </span>
+                            </a>
+                            <%}%>
+                                <% if(!logged){%>
+                                    <div class="mr-2">
+                                        <h4><a href="/login">login</a></h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="me-2"><a href="/signup-otp-page">signup</a></h4>
+                                    </div>
+                                    <%}%>
+                                        <% if(logged){%>
+
+                                            <a class="wishlist label-down link d-xs-show" href="/user/wishlist">
+                                                <i class="fas fa-heart"><sup style="color: blue;font-size:2rem ;"
+                                                        id="wishlistCount">
+                                                        <%=wishlistCount%>
+                                                    </sup></i>
+                                                <span class="wishlist-label d-lg-show">Wishlist</span>
+                                            </a>
+
+                                            <a href="/cart" class="wishlist label-down link d-xs-show">
+                                                <i class="fas fa-shopping-cart"><sup
+                                                        style="color: blue;font-size:2rem ;" id="cartCount">
+                                                        <%=cartCount%>
+                                                    </sup></i>
+                                                <span class="cart-label">Cart</span>
+                                            </a>
+                                            <a class="wishlist label-down link d-xs-show" href="/logout">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <span class="wishlist-label d-lg-show">logout</span>
+                                            </a>
+
+                                            <%}%>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header">
+                <div class="container">
+                    <div class="inner-wrap">
+                        <div class="header-left">
+                            <div class="dropdown category-dropdown has-border" data-visible="true">
+                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true" data-display="static"
+                                    title="Browse Categories">
+                                    <i class="w-icon-category"></i>
+                                    <span>Browse Categories</span>
+                                </a>
+
+                                <div class="dropdown-box">
+                                    <ul class="menu vertical-menu category-menu">
+                                        <%for(var i=0; i<category.length;i++){%>
+                                            <li>
+                                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                                    <%=category[i].categoryName.toUpperCase()%>
+                                                </a>
+                                                <ul class="megamenu">
+                                                    <li>
+                                                        <%for(var j=0; j<category[i].subCategory.length;j++){%>
+                                                            <a
+                                                                href="/search-subcategory?cat=<%=category[i]%>&subcat=<%=category[i].subCategory[j]%>">
+                                                                <h4 class="menu-title">
+                                                                    <%=category[i].subCategory[j]%>
+                                                                </h4>
+                                                            </a><br>
+                                                            <%}%>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <%}%>
+                                    </ul>
+                                </div>
+                            </div>
+                            <nav class="main-nav">
+                                <ul class="menu active-underline">
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="/shop">Shop</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End of Header -->
+
+
+        <!-- Start of Main -->
+        <main class="main">
+            <!-- Start of Page Header -->
+
+            <!-- End of Page Header -->
+
+            <!-- Start of Breadcrumb -->
+            <nav class="breadcrumb-nav">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/account">My-Account</a></li>
+                        <li>Address</li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- End of Breadcrumb -->
+
+            <!-- Start of PageContent -->
+            <div class="page-content">
+                <div class="container" style="min-height: 70vh;">
+
+                    <h3>My Address</h3>
+                    <div class="container">
+                        <%if(addressList.length>0){%>
+                            <table class="address-table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th style="text-align: start; font-size: large;"><span>Name</span></th>
+                                        <th style="text-align: start; font-size: large;"><span>Address</span></th>
+                                        <th style="text-align: start; font-size: large;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%for(var i=0; i<addressList.length;i++){%>
+                                        <tr>
+                                            <td>
+                                                <%=i+1%>
+                                            </td>
+                                            <td style="text-align: start; font-size: medium;">
+                                                <%=addressList[i].details.name.toUpperCase()%>
+                                            </td>
+                                            <td style="text-align: start; font-size: medium">
+                                                <span>
+                                                    <%=addressList[i].details.address.toUpperCase()%>
+                                                </span>,
+                                                <span>
+                                                    <%=addressList[i].details.pin%>
+                                                </span><br>
+                                                <span>
+                                                    <%=addressList[i].details.phone%>
+                                                </span>
+                                            </td>
+                                            <td style="text-align: start;">
+                                                <button class="badge bg-success open-AddBookDialog"
+                                                    data-bs-toggle="modal" data-bs-target="#edit-address" data-val="<%=addressList[i]._id%>"  
+                                                    data-val1="<%=addressList[i].details.name%>"
+                                                    data-val2="<%=addressList[i].details.phone%>"
+                                                    data-val3="<%=addressList[i].details.pin%>"
+                                                    data-val4="<%=addressList[i].details.address%>"
+
+                                                    style="background-color: #00f; border: #00f;">Edit</button>
+                                                <button onclick="deleteAddress('<%=addressList[i]._id%>')" class="badge btn-secondary btn-sm"
+                                                    style="background-color: #333; border: #f00;">Delete</button>
+                                            </td>
+                                        </tr>
+                                        <%}%>
+
+                                </tbody>
+                            </table>
+                            <%}%>
+                                <%if(addressList.length==0){%>
+                    </div>
+                    <div class="container">
+                        <div class="row text-center">
+                            <h4>No Address Found</h4>
+                        </div>
+                    </div>
+                    <%}%>
+                    <button class="btn-sm btn-secondary mb-3 text-uppercase" data-bs-toggle="modal" data-bs-target="#add-address"><b>Add new address</b></button>
+                </div>
+            </div>
+            <!-- End of PageContent -->
+        </main>
+        <!-- End of Main -->
+
+        <!-- Start of Footer -->
+        <footer class="footer appear-animate" data-animation-options="{
+            'name': 'fadeIn'
+        }">
+            <div class="footer-newsletter bg-primary">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="icon-box-content text-center col-12">
+
+                            <h5 style="color: #fff;">© Copyright . All Rights Reserved</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Start of Sticky Footer -->
+    <div class="sticky-footer sticky-content fix-bottom">
+        <a href="/" class="sticky-link active">
+            <i class="w-icon-home"></i>
+            <p>Home</p>
+        </a>
+        <a href="/shop" class="sticky-link">
+            <i class="w-icon-category"></i>
+            <p>Shop</p>
+        </a>
+        <% if(logged){%>
+        <a href="/account" class="sticky-link">
+            <i class="w-icon-account"></i>
+            <p>Account</p>
+        </a>
+        <a href="/cart" class="sticky-link">
+            <i class="w-icon-cart"></i>
+            <p>Cart</p>
+        </a>
+        <a href="/user/wishlist" class="sticky-link">
+            <i class="w-icon-heart"></i>
+            <p>Wishlist</p>
+        </a>
+        <%}%>
+    </div>
+    <!-- End of Sticky Footer -->
+
+    <!-- Start of Scroll Top -->
+    <a id="scroll-top" class="scroll-top" href="#top" title="Top" role="button"> <i class="w-icon-angle-up"></i> <svg
+            version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <circle id="progress-indicator" fill="transparent" stroke="#000000" stroke-miterlimit="10" cx="35" cy="35"
+                r="34" style="stroke-dasharray: 16.4198, 400;"></circle>
+        </svg> </a>
+    <!-- End of Scroll Top -->
+
+    <!-- Start of Mobile Menu -->
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-menu-overlay"></div>
+        <!-- End of .mobile-menu-overlay -->
+
+        <a href="#" class="mobile-menu-close"><i class="close-icon"></i></a>
+        <!-- End of .mobile-menu-close -->
+
+        <div class="mobile-menu-container scrollable">
+            <form action="/product_search" method="post" class="input-wrapper">
+                <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search"
+                    required />
+                <button class="btn btn-search" type="submit">
+                    <i class="w-icon-search"></i>
+                </button>
+            </form>
+            <!-- End of Search Form -->
+            <div class="tab">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a href="#main-menu" class="nav-link active">Main Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#categories" class="nav-link">Categories</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="main-menu">
+                    <ul class="mobile-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/logout">logout</a></li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="categories">
+                    <ul class="mobile-menu">
+                        <%for(var i=0; i<category.length;i++){%>
+                            <li>
+                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                    <%=category[i].categoryName.toUpperCase()%>
+                                </a>
+                            </li>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Mobile Menu -->
+
+    <!-- Plugin JS File -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function deleteAddress(addressId){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                    url:'/user/address-delete',
+                    method: 'post',
+                    data:{addressId:addressId},
+                    success: (response) => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Address Successfully Deleted'
+                        }).then(()=>{
+                            location.reload()
+                        })
+                        
+                    }
+                })
+                }
+            })
+            
+        }
+    </script>
+
+    <script src="/user/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/user/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/user/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/user/assets/js/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--MODAL - ADDRESS EDIT-->
+    <div class="modal fade" id="edit-address" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Address</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-5">
+                    <form action="/user/address-edit" method="post" id="myform" onsubmit="return validateMYForm1()">
+                        <div><label for="name" class="form-label">Name</label><br>
+                            <input type="text" style="width: 100%;" name="name" id="name" value="" required>
+                        </div>
+                        <div><label for="pin" class="form-label">Pincode</label><br>
+                            <input type="text" style="width: 100%;" name="pin" id="pin" value="" required maxlength="6" minlength="6">
+                        </div>
+                        <div><label for="phone" class="form-label">Phone</label><br>
+                            <input type="text" style="width: 100%;" name="phone" id="phone" value="" maxlength="10" minlength="10">
+                        </div>
+                        <div class="mb-5"><label for="address" class="form-label">Address</label><br>
+                            <textarea style="width: 100%;" type="text" name="address" id="address" value="" minlength="6" ></textarea>
+                        </div>
+                        <input type="text" id="addressId" name="addressId" value="" hidden>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--MODAL - ADDRESS EDIT -  END-->
+
+    <!--Modal - Add Address-->
+    <div class="modal fade" id="add-address" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Address</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-5">
+                    <form action="/user/address-add" method="post" id="myform1" onsubmit="return validateMYForm()">
+                        <div><label for="name" class="form-label">Name</label><br>
+                            <input type="text" style="width: 100%;" name="name" id="name1" value="" required>
+                        </div>
+                        <div><label for="pin" class="form-label">Pincode</label><br>
+                            <input type="text" style="width: 100%;" name="pin" id="pin1" value="" required maxlength="6" minlength="6">
+                        </div>
+                        <div><label for="phone" class="form-label">Phone</label><br>
+                            <input type="text" style="width: 100%;" name="phone" id="phone1" value="" maxlength="10" minlength="10">
+                        </div>
+                        <div class="mb-5"><label for="address" class="form-label">Address</label><br>
+                            <textarea style="width: 100%;" type="text" name="address" id="address1" value="" minlength="6" ></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Add Address</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal End-->
+
+    <script>
+        $('#edit-address').on('show.bs.modal', function (event) {
+            let addressId = $(event.relatedTarget).attr('data-val');
+            let name = $(event.relatedTarget).attr('data-val1');
+            let phone = $(event.relatedTarget).attr('data-val2');
+            let pin = $(event.relatedTarget).attr('data-val3');
+            let address = $(event.relatedTarget).attr('data-val4');
+            
+            
+            $(this).find('#name').val(name)
+            $(this).find('#phone').val(phone)
+            $(this).find('#pin').val(pin)
+            $(this).find('#address').val(address)
+            $(this).find('#addressId').val(addressId)
+            
+        });
+    </script>
+
+    <script>
+        function validateMYForm(){
+            name=document.getElementById('name1').value.trim()
+            phone=document.getElementById('phone1').value.trim()
+            pin=document.getElementById('pin1').value.trim()
+            address=document.getElementById('address1').value.trim()
+
+            if(name.length<5){
+                document.getElementById('name1').style.borderColor = "red"
+                return false
+            }else{
+                document.getElementById('name1').style.borderColor = 'transparent'
+            }
+            
+            if(isNaN(pin)){
+                document.getElementById('pin1').style.borderColor = "red"
+                return false
+            }else{
+                document.getElementById('name1').style.borderColor = 'transparent'
+            }
+
+            if(isNaN(phone)){
+                document.getElementById('phone1').style.borderColor = "red"
+                return false
+            }else{
+                document.getElementById('name1').style.borderColor = 'transparent'
+            }
+
+            if(address.length<5){
+                document.getElementById('address1').style.borderColor = "red"
+                return false
+            }else{
+                document.getElementById('name1').style.borderColor = 'transparent'
+            }
+            
+            
+        }
+
+        function validateMYForm1(){
+            name=document.getElementById('name').value.trim()
+            phone=document.getElementById('phone').value.trim()
+            pin=document.getElementById('pin').value.trim()
+            address=document.getElementById('address').value.trim()
+
+            if(name.length<5){
+                document.getElementById('name').style.borderColor = "red"
+                return false
+            }else{
+                document.getElementById('name').style.borderColor = 'transparent'
+            }
+            
+            if(isNaN(pin)){
+                document.getElementById('pin').style.borderColor = "red"
+                return false
+            }else{
+                document.getElementById('name').style.borderColor = 'transparent'
+            }
+
+            if(isNaN(phone)){
+                document.getElementById('phone').style.borderColor = "red"
+                return false
+            }else{
+                document.getElementById('name').style.borderColor = 'transparent'
+            }
+
+            if(address.length<5){
+                document.getElementById('address').style.borderColor = "red"
+                return false
+            }else{
+                document.getElementById('name').style.borderColor = 'transparent'
+            }
+            
+            
+        }
+//         $(document).ready(function() {
+//     $('#myform').formValidation({
+//         framework: 'bootstrap',
+//         excluded: ':disabled',
+//         icon: {
+//             valid: 'glyphicon glyphicon-ok',
+//             invalid: 'glyphicon glyphicon-remove',
+//             validating: 'glyphicon glyphicon-refresh'
+//         },
+//         fields: {
+//             name: {
+//                 validators: {
+//                     notEmpty: {
+//                         message: 'The name is required'
+//                     }
+//                 }
+//             },
+//             phone: {
+//                 validators: {
+//                     notEmpty: {
+//                         message: 'The password is required'
+//                     }
+//                 }
+//             }
+//         }
+//     });
+// });
+        // $(document).ready(function () {
+        //     $("#myform").validate({
+        //     rules: {
+        //             name: {
+        //                 requied: true,
+        //                 minlength: 4
+        //             },
+        //             phone: {
+        //                 requied: true,
+        //                 minlength: 10,
+        //                 maxlength: 10,
+        //                 Number: true
+        //             },
+        //             pin: {
+        //                 required: true,
+        //                 minlength: 6,
+        //                 maxlength: 6,
+        //                 Number: true
+        //             },
+        //             address: {
+        //                 required: true,
+        //                 minlength: 5
+        //             }
+        //         },
+        //         message: {
+        //             requied: 'This field is required',
+        //             minlength: 'should have a minimum length',
+
+        //         },
+
+        //     submitHandler: function (form) {
+        //         form.submit();
+        //     }
+        // })
+        // })
+
+        // $("#myform").validate({
+
+        //     rules: {
+        //             name: {
+        //                 requied: true,
+        //                 minlength: 4
+        //             },
+        //             phone: {
+        //                 requied: true,
+        //                 minlength: 10,
+        //                 maxlength: 10,
+        //                 Number: true
+        //             },
+        //             pin: {
+        //                 required: true,
+        //                 minlength: 6,
+        //                 maxlength: 6,
+        //                 Number: true
+        //             },
+        //             address: {
+        //                 required: true,
+        //                 minlength: 5
+        //             }
+        //         },
+        //         message: {
+        //             requied: 'This field is required',
+        //             minlength: 'should have a minimum length',
+
+        //         },
+
+        //     submitHandler: function (form) {
+        //         form.preventDefault()
+        //         form.submit();
+        //     }
+        // });
+    </script>
+</body>
+
+
+<!-- Mirrored from portotheme.com/html/wolmart/my-account.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Nov 2021 04:58:49 GMT -->
+
+</html>

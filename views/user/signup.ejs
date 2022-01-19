@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Wolmart-eCart</title>
+
+    <meta name="keywords" content="ecommerce" />
+    <meta name="description" content="e-cart.">
+    <meta name="sandeep" content="ecart">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/user/assets/images/icons/favicon.png">
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+
+    </script>
+    <script>
+        function validateForm() {
+            alert('asndb    ')
+            password = document.getElementById('password').value
+            name = document.getElementById('name').value
+            email = document.getElementById('email').value
+
+            if (password.length < 5)
+                return false
+            else if (name.length < 5)
+                return false
+            else if (email.length < 5)
+                return false
+            else
+                return true
+        }
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/fonts/wolmart87d5.woff?png09e" as="font" type="font/woff"
+        crossorigin="anonymous">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/animate/animate.min.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/user/assets/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/nouislider/nouislider.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/style.min.css">
+    <style>
+        label.error {
+            font-weight: 400;
+            color: #f00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header header-border">
+
+            <!-- End of Header Top -->
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left">
+                        <a href="/" class="logo ml-lg-0">
+                            <img src="/user/assets/images/demos/demo10/header-logo.png" alt="logo" width="145"
+                                height="45" />
+                        </a>
+                    </div>
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
+                        </a>
+                        <form method="get" action="#"
+                            class="header-search hs-rounded d-none d-md-flex ml-4 ml-lg-0 input-wrapper">
+                            <input type="text" class="form-control" name="search" id="search" placeholder="Search..."
+                                required />
+                            <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- End of Header Left -->
+
+
+
+                    <div class="header-right">
+                        <a class="wishlist label-down link d-xs-show" href="/login">
+
+
+                            <div class="mr-2">
+                                <h4><a href="/login">login</a></h4>
+                            </div>
+
+
+                        </a>
+
+
+
+
+
+                    </div>
+                    <!-- End of Header Right -->
+                </div>
+            </div>
+
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header">
+                <div class="container">
+                    <div class="inner-wrap">
+                        <div class="header-left">
+                            <div class="dropdown category-dropdown has-border" data-visible="true">
+                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true" data-display="static"
+                                    title="Browse Categories">
+                                    <i class="w-icon-category"></i>
+                                    <span>Browse Categories</span>
+                                </a>
+
+                                <div class="dropdown-box">
+                                    <ul class="menu vertical-menu category-menu">
+                                        <%for(var i=0; i<category.length;i++){%>
+                                            <li>
+                                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                                    <%=category[i].categoryName.toUpperCase()%>
+                                                </a>
+                                            </li>
+                                            <%}%>
+                                    </ul>
+                                </div>
+                            </div>
+                            <nav class="main-nav">
+                                <ul class="menu active-underline">
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="/shop">Shop</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+    </header>
+    </div>
+
+
+    <div class="row justify-content-center" style="min-height: 90vh;">
+        <div class="col-md-4 mt-5 pb-5 shadow p-3 mb-5 bg-body rounded border ps-5">
+            <div class="row pt-3 text-center">
+                <h4>NEW USER SIGNUP</h4>
+                <h3></h3>
+            </div>
+            <form onsubmit="return validateForm()" action="/signup?phone=<%=phone%>" method="post" id="myform">
+
+                <div class="mb-3 mt-3 pl-5 pr-5">
+                    <label for="name" class="form-label">User Name*</label>
+                    <input type="name" class="form-control" id="name" placeholder="Enter email" name="name">
+
+                </div>
+                <div class="mb-3 mt-3 pl-5 pr-5">
+                    <label for="email" class="form-label">Email-ID*</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+
+                </div>
+                <div class="mb-3 pl-5 pr-5">
+                    <label for="password" class="form-label">Password*</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password"
+                        name="password">
+
+                </div>
+                <div class="mb-3 mt-3 pl-5 pr-5">
+                    <label for="referral" class="form-label">Referral Code</label>
+                    <input type="text" class="form-control" id="referral" placeholder="Referral Code" name="referral">
+
+                </div>
+
+                <div class="pl-5">
+                    <button type="submit" class="btn btn-primary" id="submitbtn">Signup</button>
+                </div>
+            </form>
+            <div class="row pt-3 pl-5">
+                <a href="/login">Already Registered? Login Here</a>
+            </div>
+        </div>
+    </div>
+    <footer class="footer appear-animate" data-animation-options="{
+        'name': 'fadeIn'
+    }">
+        <div class="footer-newsletter bg-primary">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="icon-box-content text-center col-12">
+
+                        <h5 style="color: #fff;">© Copyright . All Rights Reserved</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- Start of Sticky Footer -->
+    <div class="sticky-footer sticky-content fix-bottom">
+        <a href="/" class="sticky-link active">
+            <i class="w-icon-home"></i>
+            <p>Home</p>
+        </a>
+        <a href="/shop" class="sticky-link">
+            <i class="w-icon-category"></i>
+            <p>Shop</p>
+        </a>
+
+    </div>
+    <!-- End of Sticky Footer -->
+    <!-- Start of Mobile Menu -->
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-menu-overlay"></div>
+        <!-- End of .mobile-menu-overlay -->
+
+        <a href="#" class="mobile-menu-close"><i class="close-icon"></i></a>
+        <!-- End of .mobile-menu-close -->
+
+        <div class="mobile-menu-container scrollable">
+            <form action="/product_search" method="post" class="input-wrapper">
+                <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search"
+                    required />
+                <button class="btn btn-search" type="submit">
+                    <i class="w-icon-search"></i>
+                </button>
+            </form>
+            <!-- End of Search Form -->
+            <div class="tab">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a href="#main-menu" class="nav-link active">Main Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#categories" class="nav-link">Categories</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="main-menu">
+                    <ul class="mobile-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/logout">logout</a></li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="categories">
+                    <ul class="mobile-menu">
+                        <%for(var i=0; i<category.length;i++){%>
+                            <li>
+                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                    <%=category[i].categoryName.toUpperCase()%>
+                                </a>
+                            </li>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Mobile Menu -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+
+    <script>
+        $("#myform").validate({
+
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 3
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            message: {
+                name: {
+                    required: 'Please enter username',
+                    minlength: 'Should be minimum 3 characters'
+                },
+                password: {
+                    required: 'Please enter the password',
+                    minlength: 'Should be minimum 5 characters'
+                },
+                email: {
+                    required: 'Enter the email id'
+                }
+            },
+
+            submitHandler: function (form) {
+                form.submit();
+            }
+        });
+    </script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function validateForm() {
+
+            let emailError = true;
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            function validateEmail() {
+                let emailval = $('#email').val()
+                if (emailval == "") {
+                    $('#email').css('border-color', '#f30000')
+                    $('#email').attr("placeholder", "Enter the email ID")
+                    emailError = false;
+                    return false
+                }
+                if (!emailReg.test(emailval)) {
+                    $('#email').css('border-color', '#f30000')
+                    $('#email').attr("placeholder", "Enter valid email id")
+                    emailError = false
+                    return false
+                }
+            }
+
+            let passwordError = true
+            function validatePassword() {
+                let passwordval = $('#password').val()
+                if (passwordval == "") {
+                    $('#password').css('border-color', '#f30000')
+                    $('#password').attr("placeholder", "Enter password")
+                    passwordError = false
+                    return false
+                }
+
+            }
+
+            let usernameError = true
+            function validateName() {
+                let nameval = $('#name').val()
+                if (nameval == "") {
+                    $('#name').css('border-color', '#f30000')
+                    $('#name').attr("placeholder", "Enter userName")
+                    usernameError = false
+                    return false
+                }
+                if(nameval.length<3){
+                    $('#name').css('border-color', '#f30000')
+                    $('#name').attr("placeholder", "Minimum length 3")
+                    usernameError = false
+                    return false 
+                }
+
+            }
+
+            validatePassword()
+            validateEmail()
+            validateName()
+
+            if (emailError === true && passwordError === true&& usernameError===true) {
+                return true
+            } else {
+                return false
+            }
+
+        }
+    </script>
+
+
+
+    <!-- Plugin JS File -->
+    <script src="/user/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/user/assets/vendor/sticky/sticky.js"></script>
+    <script src="/user/assets/vendor/jquery.plugin/jquery.plugin.min.js"></script>
+    <script src="/user/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/user/assets/vendor/nouislider/nouislider.min.js"></script>
+    <script src="/user/assets/vendor/jquery.countdown/jquery.countdown.min.js"></script>
+    <script src="/user/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="/user/assets/vendor/zoom/jquery.zoom.js"></script>
+    <script src="/user/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="/user/assets/js/main.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>

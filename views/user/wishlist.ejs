@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from portotheme.com/html/wolmart/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Nov 2021 04:58:49 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    
+
+    <title>Wolmart-eCart</title>
+
+    <meta name="keywords" content="ecommerce" />
+    <meta name="description" content="e-cart.">
+    <meta name="sandeep" content="ecart">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/user/assets/images/icons/favicon.png">
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/fonts/wolmart87d5.woff?png09e" as="font" type="font/woff"
+        crossorigin="anonymous">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet" href="/user/assets/vendor/swiper/swiper-bundle.min.css">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/style.min.css">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Start of Header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="container">
+
+                </div>
+            </div>
+            <!-- End of Header Top -->
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
+                        </a>
+                        <a href="demo1.html" class="logo ml-lg-0">
+                            <img src="/user/assets/images/logo.png" alt="logo" width="144" height="45" />
+                        </a>
+                        <form method="post" action="/search"
+                            class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                            <div class="select-box">
+                                <select id="category" name="category">
+                                    <option value="">All Categories</option>
+                                    <%for(var i=0; i<category.length;i++){%>
+                                        <option value="<%=category[i].categoryName.toUpperCase()%>">
+                                            <%=category[i].categoryName.toUpperCase()%>
+                                        </option>
+                                        <%}%>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control" name="search" id="search" placeholder="Search in..."
+                                required />
+                            <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="header-right ml-4">
+                        <% if(logged){%>
+                            <a class="wishlist label-down link d-xs-show" href="/account">
+                                <i class="fas fa-user"></i>
+                                <span class="wishlist-label d-lg-show">
+                                    <%= data.name%>
+                                </span>
+                            </a>
+                            <%}%>
+                                <% if(!logged){%>
+                                    <div class="mr-2">
+                                        <h4><a href="/login">login</a></h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="me-2"><a href="/signup-otp-page">signup</a></h4>
+                                    </div>
+                                    <%}%>
+
+                                        <% if(logged){%>
+
+
+
+                                            <a class="wishlist label-down link d-xs-show" href="/user/wishlist">
+                                                <i class="fas fa-heart"><sup style="color: blue;font-size:2rem ;"
+                                                        id="wishlistCount">
+                                                        <%=wishlistCount%>
+                                                    </sup></i>
+                                                <span class="wishlist-label d-lg-show">Wishlist</span>
+                                            </a>
+
+                                            <a href="/cart" class="wishlist label-down link d-xs-show">
+                                                <i class="fas fa-shopping-cart"><sup
+                                                        style="color: blue;font-size:2rem ;" id="cartCount">
+                                                        <%=cartCount%>
+                                                    </sup></i>
+                                                <span class="cart-label">Cart</span>
+                                            </a>
+
+                                            <a class="wishlist label-down link d-xs-show" href="/logout">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <span class="wishlist-label d-lg-show">logout</span>
+                                            </a>
+
+                                            <%}%>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header">
+                <div class="container">
+                    <div class="inner-wrap">
+                        <div class="header-left">
+                            <div class="dropdown category-dropdown has-border" data-visible="true">
+                                <a href="#" class="category-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="true" data-display="static"
+                                    title="Browse Categories">
+                                    <i class="w-icon-category"></i>
+                                    <span>Browse Categories</span>
+                                </a>
+
+                                <div class="dropdown-box">
+                                    <ul class="menu vertical-menu category-menu">
+                                        <%for(var i=0; i<category.length;i++){%>
+                                            <li>
+                                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                                    <%=category[i].categoryName.toUpperCase()%>
+                                                </a>
+                                                <ul class="megamenu">
+                                                    <li>
+                                                        <%for(var j=0; j<category[i].subCategory.length;j++){%>
+                                                            <a
+                                                                href="/search-subcategory?cat=<%=category[i]%>&subcat=<%=category[i].subCategory[j]%>">
+                                                                <h4 class="menu-title">
+                                                                    <%=category[i].subCategory[j]%>
+                                                                </h4>
+                                                            </a><br>
+                                                            <%}%>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <%}%>
+                                    </ul>
+                                </div>
+                            </div>
+                            <nav class="main-nav">
+                                <ul class="menu active-underline">
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="/shop">Shop</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End of Header -->
+
+
+        <!-- Start of Main -->
+        <main class="main wishlist-page">
+            <!-- Start of Page Header -->
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title mb-0">Wishlist</h1>
+                </div>
+            </div>
+            <!-- End of Page Header -->
+
+            <!-- Start of Breadcrumb -->
+            <nav class="breadcrumb-nav mb-10">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/account">My-Account</a></li>
+                        <li>Wishlist</li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- End of Breadcrumb -->
+
+            <!-- Start of PageContent -->
+            <div class="page-content" style="min-height: 70vh;">
+                <div class="container">
+                    <%if(wishlistItem.length>0){%>
+                        <h3 class="wishlist-title">My wishlist</h3>
+                        <table class="shop-table wishlist-table">
+                            <thead>
+                                <tr>
+                                    <th class="product-name text-right"><span>Product</span></th>
+                                    <th></th>
+                                    <th class="product-price text-left"><span>Price</span></th>
+                                    <th class="product-stock-status text-left"><span>Stock Status</span></th>
+                                    <th class="wishlist-action text-left">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%for(var i=0; i<wishlistItem.length; i++){%>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <div class="p-relative">
+                                                <a href="">
+                                                    <figure>
+                                                        <img src="/product-image/<%=wishlistItem[i].item%>_1.jpg"
+                                                            alt="product" width="300" height="338">
+                                                    </figure>
+                                                </a>
+                                                <button type="submit" class="btn btn-close"
+                                                    onclick="deleteProduct('<%=wishlistItem[i]._id%>','<%=wishlistItem[i].product._id%>')"><i
+                                                        class="fas fa-times"></i></button>
+                                            </div>
+                                        </td>
+                                        <td class="product-name">
+                                            <%=wishlistItem[i].product.productName%>
+                                        </td>
+                                        <td class="product-price">
+                                            <%if(wishlistItem[i].product.discount>0 ||
+                                                wishlistItem[i].product.catDiscount>0){%>
+                                                <%if(wishlistItem[i].product.discount>
+                                                    wishlistItem[i].product.catDiscount){%>
+                                                    <span class="new-price" style="color: green;">
+                                                        <%=Math.round(wishlistItem[i].product.price*.01*(100-wishlistItem[i].product.discount))%>
+                                                    </span><span><del><ins class="new-price">(Rs.
+                                                                <%=wishlistItem[i].product.price%>)
+                                                            </ins></del></span>
+                                                    <%}else{%>
+                                                        <span class="new-price" style="color: green;">Rs.
+                                                            <%=Math.round(wishlistItem[i].product.price*.01*(100-wishlistItem[i].product.catDiscount))%>
+                                                        </span><span><del><ins class="new-price">(Rs.
+                                                                    <%=wishlistItem[i].product.price%>
+                                                                        )
+                                                                </ins></del></span>
+                                                        <%}%>
+                                                            <%}else{%>
+                                                                <ins class="new-price">Rs.
+                                                                    <%=wishlistItem[i].product.price%>
+                                                                </ins>
+                                                                <%}%>
+                                        </td>
+                                        <td class="product-stock-status">
+                                            <%if(wishlistItem[i].product.inStock){%>
+                                                <span class="wishlist-in-stock">In Stock</span>
+                                                <%}%>
+                                                    <%if(!wishlistItem[i].product.inStock){%>
+                                                        <span class="text-danger">Out of Stock</span>
+                                                        <%}%>
+                                        </td>
+                                        <td class="wishlist-action">
+                                            <div class="d-lg-flex">
+                                                <a href="/buy-now/<%=wishlistItem[i].product._id%>"
+                                                    class="btn btn-dark btn-rounded btn-sm ml-lg-2">Buy Now</a>
+
+                                                <span class="btn btn-dark btn-rounded btn-sm ml-lg-2" onclick="addToCart('<%=wishlistItem[i].product._id%>')">Add to Cart</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                            </tbody>
+                        </table>
+                        <%}%>
+                            <%if(wishlistItem.length==0){%>
+                                <div class="container" style="height: 20vh;">
+                                    <div class="row text-center">
+                                        <h4> YOUR WISHLIST IS EMPTY</h4>
+                                    </div>
+                                </div>
+                                <%}%>
+                </div>
+            </div>
+            <!-- End of PageContent -->
+        </main>
+        <!-- End of Main -->
+
+        <!-- Start of Footer -->
+        <footer class="footer appear-animate" data-animation-options="{
+            'name': 'fadeIn'
+        }">
+            <div class="footer-newsletter bg-primary">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="icon-box-content text-center col-12">
+
+                            <h5 style="color: #fff;">© Copyright . All Rights Reserved</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Start of Sticky Footer -->
+    <div class="sticky-footer sticky-content fix-bottom">
+        <a href="/" class="sticky-link active">
+            <i class="w-icon-home"></i>
+            <p>Home</p>
+        </a>
+        <a href="/shop" class="sticky-link">
+            <i class="w-icon-category"></i>
+            <p>Shop</p>
+        </a>
+        <% if(logged){%>
+            <a href="/account" class="sticky-link">
+                <i class="w-icon-account"></i>
+                <p>Account</p>
+            </a>
+            <a href="/cart" class="sticky-link">
+                <i class="w-icon-cart"></i>
+                <p>Cart</p>
+            </a>
+            <a href="/user/wishlist" class="sticky-link">
+                <i class="w-icon-heart"></i>
+                <p>Wishlist</p>
+            </a>
+            <%}%>
+    </div>
+    <!-- End of Sticky Footer -->
+
+    <!-- Start of Scroll Top -->
+    <a id="scroll-top" class="scroll-top" href="#top" title="Top" role="button"> <i class="w-icon-angle-up"></i> <svg
+            version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <circle id="progress-indicator" fill="transparent" stroke="#000000" stroke-miterlimit="10" cx="35" cy="35"
+                r="34" style="stroke-dasharray: 16.4198, 400;"></circle>
+        </svg> </a>
+    <!-- End of Scroll Top -->
+
+    <!-- Start of Mobile Menu -->
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-menu-overlay"></div>
+        <!-- End of .mobile-menu-overlay -->
+
+        <a href="#" class="mobile-menu-close"><i class="close-icon"></i></a>
+        <!-- End of .mobile-menu-close -->
+
+        <div class="mobile-menu-container scrollable">
+            <form action="/product_search" method="post" class="input-wrapper">
+                <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search"
+                    required />
+                <button class="btn btn-search" type="submit">
+                    <i class="w-icon-search"></i>
+                </button>
+            </form>
+            <!-- End of Search Form -->
+            <div class="tab">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a href="#main-menu" class="nav-link active">Main Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#categories" class="nav-link">Categories</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="main-menu">
+                    <ul class="mobile-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/logout">logout</a></li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="categories">
+                    <ul class="mobile-menu">
+                        <%for(var i=0; i<category.length;i++){%>
+                            <li>
+                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                    <%=category[i].categoryName.toUpperCase()%>
+                                </a>
+                            </li>
+                            <%}%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Mobile Menu -->
+
+    <!-- Start of Quick View -->
+
+    <!-- End of Quick view -->
+
+    <!-- Plugin JS File -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/main.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function deleteProduct(wishlistId, proId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        url: '/delete-wishlist-product',
+                        method: 'post',
+                        data: {
+                            cartId: wishlistId,
+                            proId: proId
+                        },
+                        success: (response) => {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Product Successfully removed from wishlist'
+                            }).then(() => {
+                                location.reload()
+                            })
+
+                        }
+                    })
+                }
+            })
+        }
+
+        function addToCart(proId) {
+
+            $.ajax({
+                url: "/addToCart/" + proId,
+                method: 'get',
+                success: (response) => {
+                    document.getElementById('cartCount').innerHTML = response
+                    Swal.fire('Added to cart')
+                }
+            })
+        }
+    </script>
+</body>
+
+
+<!-- Mirrored from portotheme.com/html/wolmart/wishlist.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Nov 2021 04:58:52 GMT -->
+
+</html>

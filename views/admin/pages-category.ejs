@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Components / Accordion - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="/admin/assets/img/favicon.png" rel="icon">
+  <link href="/admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/admin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+
+  <!-- Template Main CSS File -->
+  <link href="/admin/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.1.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/admin/category/edit" method="post">
+            <!-- <div><label for="category" class="form-label">Current Category Name</label> -->
+            <input type="text" name="currentName" id="test" value="" hidden>
+            <!-- </div> -->
+            <div class="mb-3">
+              <label for="category" class="form-label">New Category Name</label>
+              <input type="text" class="form-control" id="category" name="category">
+            </div>
+            <div class="mb-2">
+              <input class="form-check-input" type="radio" name="status" id="status" value="true" checked>
+              Active
+              <input class="form-check-input" type="radio" name="status" id="status" value="false">
+              Inactive
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="/admin/home" class="logo d-flex align-items-center">
+        <img src="/admin/assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">Wolmart</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <!-- <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li> -->
+        <!-- End Search Icon-->
+
+
+
+
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <!-- <img src="/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
+            <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/user">
+          <i class="bi bi-person"></i>
+          <span>User</span>
+        </a>
+
+      </li><!-- End Forms Nav -->
+
+
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/products">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Products</span>
+        </a>
+
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/category">
+          <i class="bi bi-diagram-3-fill"></i><span>Category</span>
+        </a>
+
+      </li><!-- End Charts Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/order">
+          <i class="bi bi-journal-text"></i><span>Orders</span>
+        </a>
+
+      </li><!-- End Icons Nav -->
+
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-gift-fill"></i><span>Offer Management</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav1" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/offer-category">
+              <i class="bi bi-circle"></i><span>Category Offer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/offer-product">
+              <i class="bi bi-circle"></i><span>Product Offer</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/coupon">
+              <i class="bi bi-circle"></i><span>Coupon</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Reports</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/report">
+              <i class="bi bi-circle"></i><span>Page-1</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/banner">
+          <i class="bi bi-journal-text"></i><span>Banner</span>
+        </a>
+
+      </li><!-- End Icons Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main" style="min-height: 90vh;">
+
+    <div class="pagetitle">
+      <h1>CATEGORY</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
+          <li class="breadcrumb-item">Category</li>
+
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <div class="row">
+            <!-- <div class="col-12 mb-1 mt-2 p-2">
+                      <h4>Manage Category</h4>
+                  </div> -->
+            <!--products search bar-->
+            <div class="col-12 mt-5 mb-2 p-2 d-flex justify-content-between bg-light shadow p-3 mb-1 bg-body">
+              <div class="d-inline"><a><button class="btn btn-primary"> Manager -Category</button></a></div>
+              <div class="d-inline d-flex">
+                <form class="d-flex" action="/admin/searchCategory" method="post">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+            <!--list products-->
+            <div class="col-12 bg-light shadow p-3 mb-5 bg-body">
+              <div>
+                <table class="table table-striped shadow p-3 mb-5 bg-body">
+                  <thead>
+                    <tr>
+                      <th scope="col">Category Name</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <% for(var i=0; i<data.length; i++){ %>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <%=data[i].categoryName%>
+                        </td>
+                        <%if(data[i].isActive){%>
+                          <td class="text-success">Active</td>
+                          <%}%>
+                            <%if(!data[i].isActive){%>
+                              <td class="text-danger">Inactive</td>
+                              <%}%>
+                                <td><button class="btn badge bg-success open-AddBookDialog" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal" data-val="<%=data[i].categoryName%>">Edit</button>
+                                </td>
+                                <td><a href="/admin/category/subCategory/<%=data[i]._id%>"><button
+                                      class="btn badge bg-success">
+                                      <i class="fas fa-plus"></i>SubCategory
+                                    </button></a></td>
+                                    <td><i class="fas fa-trash" style="cursor: pointer;" onclick="return confirmDelete('<%=data[i]._id%>','<%=data[i].categoryName%>')"></i></td>
+                      </tr>
+                    </tbody>
+                    <%}%>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 mt-5 ms-2 p-2 shadow p-3 mb-5 bg-body">
+          <div class="row">
+            <div class="col-12 ps-4 mb-2  bg-light">
+              <button class="btn btn-primary" type="button">Add New Category</button>
+            </div>
+            <div class="col-12">
+              <form action="/admin/category/add" method="post">
+                <div class="row shadow p-3 mb- bg-body">
+                  <div class="col-12 ">
+                    <label for="form-label">Category Name</label><br>
+                    <input style="width: 100%;" type="text" id="category" name="category" required>
+                  </div>
+                  <div class="mt-3">
+                    <label for="status">Active</label>
+                    <input type="radio" name="status" value="true" checked>
+                    <label for="status">InActive</label>
+                    <input type="radio" name="status" value="false">
+                  </div>
+                  <div class="mt-3">
+                    <button class="btn btn-success">Add</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $('#exampleModal').on('show.bs.modal', function (event) {
+        var myVal = $(event.relatedTarget).attr('data-val');
+        console.log(myVal)
+        $(this).find("#test").val(myVal);
+        alert(myVal)
+      });
+    </script>
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span></span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!-- All the links in the footer should remain intact. -->
+      <!-- You can delete the links only if you purchased the pro version. -->
+      <!-- Licensing information: https://bootstrapmade.com/license/ -->
+      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script src="/admin/assets/vendor/php-email-form/validate.js"></script>
+  <script src="/admin/assets/vendor/quill/quill.min.js"></script>
+  <script src="/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/admin/assets/vendor/chart.js/chart.min.js"></script>
+  <script src="/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/admin/assets/vendor/echarts/echarts.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/admin/assets/js/main.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function confirmDelete(catId,catName) {
+      Swal.fire({
+        title: 'Are you sure?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          location.href=`/admin/category/delete/${catId}/${catName}`
+        }else{
+          return false
+        }
+      })
+    }
+  </script>
+
+</body>
+
+</html>

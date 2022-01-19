@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {box-sizing: border-box;}
+        body {background-image: url('/background.jpg');}
+    </style>
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <!--navabr-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/admin">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/user">User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/category">Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/order">Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Offer</a>
+                    </li>
+                </ul>
+                <form class="d-flex" action="/admin/logout" method="get">
+
+                    <button class="btn btn-outline-success" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+
+    </nav>
+    <!-- Optional JavaScript; choose one of the two! -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-1 mt-2 p-2">
+                <h4 style="color: #fff;">Manage Products</h4>
+            </div>
+            <!--products search bar-->
+            <div class="col-12 mb-2 p-2 d-flex justify-content-between bg-lightshadow mb-1 bg-body rounded">
+                <div class="d-inline"><a href="/admin/products/add"><button class="btn btn-primary"> Add Products</button></a></div>
+                <div class="d-inline d-flex">
+                    <form class="d-flex" action="/admin/searchProduct" method="post">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <!--list products-->
+            <div class="col-12 bg-light shadow p-3 mb-5 bg-body rounded">
+                <div>
+                    <table class="table table-responsive-lg table-hover">
+                        <thead>
+                            <tr>
+                              <th scope="col">Image</th>
+                              <th scope="col">Product Name</th>
+                              <th scope="col">Brand</th>
+                              <th scope="col">Category</th>
+                              <th scope="col">Sub-Category</th>
+                              <th scope="col">Price</th>
+                              <th scope="col">Qty</th>
+                              
+                            </tr>
+                          </thead>
+                          <% for(var i=0; i<product.length;i++) { %>
+                        <tbody>
+                          <tr>
+                            <td><img style="height: 50px;width: 50px;" src="/product-image/<%=product[i]._id %>_1.jpg" alt=""></td>
+                            <td><%= product[i].productName %></td>
+                            <td><%= product[i].brand%></td>
+                            <td><%= product[i].category%></td>
+                            <td><%= product[i].subCategory%></td>
+                            <td><%=product[i].price%></td>
+                            <td><%=product[i].quantity%></td>
+                            <td>
+                                <a href="/admin/products/edit/<%=product[i]._id%>"><i class="fas fa-pencil"></i></a>
+                                <a href="/admin/products/delete/<%=product[i]._id%>" onclick="return confirm('Are you sure! Confirm delete?')"><i class="fas fa-trash"></i></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                        <%}%>
+                      </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>

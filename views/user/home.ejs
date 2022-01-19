@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from portotheme.com/html/wolmart/demo1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Nov 2021 05:01:33 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>Wolmart-eCart</title>
+
+    <meta name="keywords" content="ecommerce" />
+    <meta name="description" content="e-cart.">
+    <meta name="sandeep" content="ecart">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/user/assets/images/icons/favicon.png">
+
+    <!-- WebFont.js -->
+    <script>
+        WebFontConfig = {
+            google: { families: ['Poppins:400,500,600,700,800'] }
+        };
+        (function (d) {
+            var wf = d.createElement('script'), s = d.scripts[0];
+            wf.src = 'assets/js/webfont.js';
+            wf.async = true;
+            s.parentNode.insertBefore(wf, s);
+        })(document);
+    </script>
+
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-regular-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-solid-900.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/vendor/fontawesome-free/webfonts/fa-brands-400.woff2" as="font"
+        type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/user/assets/fonts/wolmart87d5.woff?png09e" as="font" type="font/woff"
+        crossorigin="anonymous">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/fontawesome-free/css/all.min.css">
+
+    <!-- Plugins CSS -->
+    <!-- <link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/assets/vendor/magnific-popup/magnific-popup.min.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="/user/assets/vendor/swiper/swiper-bundle.min.css">
+
+    <!-- Default CSS -->
+    <link rel="stylesheet" type="text/css" href="/user/assets/css/demo1.min.css">
+
+</head>
+
+<body class="home">
+    <div class="page-wrapper">
+        <h1 class="d-none">Wolmart - Responsive Marketplace HTML Template</h1>
+        <!-- Start of Header -->
+        <header class="header">
+
+            <!-- End of Header Top -->
+
+            <div class="header-middle">
+                <div class="container">
+                    <div class="header-left mr-md-4">
+                        <a href="#" class="mobile-menu-toggle  w-icon-hamburger" aria-label="menu-toggle">
+                        </a>
+                        <a href="/" class="logo ml-lg-0">
+                            <img src="/user/assets/images/logo.png" alt="logo" width="144" height="45" />
+                        </a>
+                        <form method="post" action="/search"
+                            class="header-search hs-expanded hs-round d-none d-md-flex input-wrapper">
+                            <div class="select-box">
+                                <select id="category" name="category">
+                                    <option value="">All Categories</option>
+                                    <%for(var i=0; i<category.length;i++){%>
+                                        <option value="<%=category[i].categoryName.toUpperCase()%>">
+                                            <%=category[i].categoryName.toUpperCase()%>
+                                        </option>
+                                        <%}%>
+                                </select>
+                            </div>
+                            <input type="text" class="form-control" name="search" id="search" placeholder="Search in..."
+                                required />
+                            <button class="btn btn-search" type="submit"><i class="w-icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="header-right ml-4">
+                        <% if(logged){%>
+                            <a class="wishlist label-down link d-xs-show" href="/account">
+                                <i class="fas fa-user"></i>
+                                <span class="wishlist-label d-lg-show">
+                                    <%= data.name%>
+                                </span>
+                            </a>
+                            <%}%>
+                                <% if(!logged){%>
+                                    <div class="mr-2">
+                                        <h4><a href="/login">login</a></h4>
+                                    </div>
+                                    <div>
+                                        <h4 class="me-2"><a href="/signup-otp-page">signup</a></h4>
+                                    </div>
+                                    <%}%>
+
+                                        <% if(logged){%>
+
+
+
+                                            <a class="wishlist label-down link d-xs-show" href="/user/wishlist">
+                                                <i class="fas fa-heart"><sup style="color: blue;font-size:2rem ;"
+                                                        id="wishlistCount">
+                                                        <%=wishlistCount%>
+                                                    </sup></i>
+                                                <span class="wishlist-label d-lg-show">Wishlist</span>
+                                            </a>
+
+                                            <a href="/cart" class="wishlist label-down link d-xs-show">
+                                                <i class="fas fa-shopping-cart"><sup
+                                                        style="color: blue;font-size:2rem ;" id="cartCount">
+                                                        <%=cartCount%>
+                                                    </sup></i>
+                                                <span class="cart-label">Cart</span>
+                                            </a>
+
+                                            <a class="wishlist label-down link d-xs-show" href="/logout">
+                                                <i class="fas fa-sign-out-alt"></i>
+                                                <span class="wishlist-label d-lg-show">logout</span>
+                                            </a>
+
+                                            <%}%>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- End of Header Middle -->
+
+            <div class="header-bottom sticky-content fix-top sticky-header has-dropdown">
+                <div class="container">
+                    <div class="inner-wrap">
+                        <div class="header-left">
+                            <ul class="menu active-underline">
+                                <li class="active">
+                                    <a href="/">Home</a>
+                                </li>
+                                <li>
+                                    <a href="/shop">Shop</a>
+
+                                    <!-- Start of Megamenu -->
+
+                                    <!-- End of Megamenu -->
+                                </li>
+                                <li>
+                                    <a href="/shop">Browse Category</a>
+                                    <ul>
+                                        <%for(var i=0; i<category.length;i++){%>
+                                            <li>
+                                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                                    <%=category[i].categoryName.toUpperCase()%>
+                                                </a>
+                                                <%if(category[i].subCategory.length>0){%>
+                                                    <ul>
+                                                        <%for(var j=0; j<category[i].subCategory.length;j++){%>
+                                                            <li><a
+                                                                    href="/search-subcategory?cat=<%=category[i]%>&subcat=<%=category[i].subCategory[j]%>">
+                                                                    <%=category[i].subCategory[j]%>
+                                                                </a></li>
+                                                            <%}%>
+                                                    </ul>
+                                                    <%}%>
+                                            </li>
+                                            <%}%>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End of Header -->
+
+        <!-- Start of Main-->
+        <main class="main">
+            <section class="intro-section">
+                <div class="swiper-container swiper-theme nav-inner pg-inner swiper-nav-lg animation-slider pg-xxl-hide nav-xxl-show nav-hide"
+                    data-swiper-options="{
+                    'slidesPerView': 1,
+                    'autoplay': {
+                        'delay': 8000,
+                        'disableOnInteraction': false
+                    }
+                }">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide banner banner-fixed intro-slide intro-slide1"
+                            style="background-image: url(/user/assets/images/demos/demo1/sliders/slide-1.jpg); background-color: #ebeef2;">
+                            <div class="container">
+                                <figure class="slide-image skrollable slide-animate">
+                                    <img src="banner.jpg" alt="Banner" data-bottom-top="transform: translateY(10vh);"
+                                        data-top-bottom="transform: translateY(-10vh);" width="474" height="397">
+                                </figure>
+                                <div class="banner-content y-50 text-right">
+                                    <h5 class="banner-subtitle font-weight-normal text-default ls-50 lh-1 mb-2 slide-animate"
+                                        data-animation-options="{
+                                    'name': 'fadeInRightShorter',
+                                    'duration': '1s',
+                                    'delay': '.2s'
+                                }">
+                                <%=banner.title1%>
+                                    </h5>
+                                    <h3 class="banner-title font-weight-bolder ls-25 lh-1 slide-animate"
+                                        data-animation-options="{
+                                    'name': 'fadeInRightShorter',
+                                    'duration': '1s',
+                                    'delay': '.4s'
+                                }">
+                                        <%=banner.title2%>
+                                    </h3>
+                                    <p class="font-weight-normal text-default slide-animate" data-animation-options="{
+                                    'name': 'fadeInRightShorter',
+                                    'duration': '1s',
+                                    'delay': '.6s'
+                                }">
+                                        <span class="font-weight-bolder text-secondary">
+                                            <%=banner.title3%>
+                                        </span>
+                                    </p>
+
+                                    <a href="/shop"
+                                        class="btn btn-dark btn-outline btn-rounded btn-icon-right slide-animate"
+                                        data-animation-options="{
+                                    'name': 'fadeInRightShorter',
+                                    'duration': '1s',
+                                    'delay': '.8s'
+                                }">SHOP NOW<i class="w-icon-long-arrow-right"></i></a>
+
+                                </div>
+                                <!-- End of .banner-content -->
+                            </div>
+                            <!-- End of .container -->
+                        </div>
+                        <!-- End of .intro-slide1 -->
+
+
+                        <!-- End of .intro-slide3 -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <button class="swiper-button-next"></button>
+                    <button class="swiper-button-prev"></button>
+                </div>
+                <!-- End of .swiper-container -->
+            </section>
+            <!-- End of .intro-section -->
+
+            <div class="container">
+                <div class="swiper-container appear-animate icon-box-wrapper br-sm mt-6 mb-6" data-swiper-options="{
+                    'slidesPerView': 1,
+                    'loop': false,
+                    'breakpoints': {
+                        '576': {
+                            'slidesPerView': 2
+                        },
+                        '768': {
+                            'slidesPerView': 3
+                        },
+                        '1200': {
+                            'slidesPerView': 4
+                        }
+                    }
+                }">
+                    <div class="swiper-wrapper row cols-md-4 cols-sm-3 cols-1">
+                        <div class="swiper-slide icon-box icon-box-side icon-box-primary">
+                            <span class="icon-box-icon icon-shipping">
+                                <i class="w-icon-truck"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title font-weight-bold mb-1">Free Shipping & Returns</h4>
+
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side icon-box-primary">
+                            <span class="icon-box-icon icon-payment">
+                                <i class="w-icon-bag"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title font-weight-bold mb-1">Secure Payment</h4>
+                                <p class="text-default">We ensure secure payment</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-money">
+                            <span class="icon-box-icon icon-money">
+                                <i class="w-icon-money"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title font-weight-bold mb-1">Money Back Guarantee</h4>
+                                <p class="text-default">Any back within 30 days</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide icon-box icon-box-side icon-box-primary icon-box-chat">
+                            <span class="icon-box-icon icon-chat">
+                                <i class="w-icon-chat"></i>
+                            </span>
+                            <div class="icon-box-content">
+                                <h4 class="icon-box-title font-weight-bold mb-1">Customer Support</h4>
+                                <p class="text-default">Call or email us 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Iocn Box Wrapper -->
+
+
+                <!-- End of Category Banner Wrapper -->
+
+
+                <!-- End of Deals Wrapper -->
+            </div>
+
+            <section class="category-section top-category bg-grey pt-10 pb-10 appear-animate">
+
+                <div class="container-flex pb-2 mt-1 pt-3" style="background-color: rgb(253, 253, 252);">
+                    <div class="tab tab-nav-boxed tab-nav-outline appear-animate mt-4 mb-3">
+                        <ul class="nav nav-tabs justify-content-center" role="tablist">
+                            <li class="nav-item mr-2 mb-2">
+                                <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">Top Selling
+                                    Products</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <h2 class="title justify-content-center pt-1 ls-normal mb-5">Top Selling Products</h2> -->
+                    <div class="swiper">
+                        <div class="swiper-container swiper-theme pg-show" data-swiper-options="{
+                            'spaceBetween':0,
+                            'slidesPerView': 1,
+                            'loop': true,
+                            'breakpoints': {
+                                '576': {
+                                    'slidesPerView': 1
+                                },
+                                '768': {
+                                    'slidesPerView': 1
+                                },
+                                '992': {
+                                    'slidesPerView': 1
+                                }
+                            }
+                        }">
+                            <div class="swiper-wrapper row cols-lg-6 cols-md-5 cols-sm-3 cols-2 justify-content-center">
+                                <%for(var i=0; i<bestSeller.length;i++){%>
+                                    <div class="product">
+                                        <div class="card shadow p-3 mb-5 bg-body rounded ml-2 mr-2"
+                                            style="width: 16rem;">
+                                            <img src="/product-image/<%=bestSeller[i].product._id%>_1.jpg" height="95%"
+                                                class="card-img-top" alt="...">
+                                                <%if(logged){%>
+                                                    <div class="product-action-vertical">
+                                                        <a href="" class="btn-product-icon btn-cart w-icon-cart"
+                                                            title="Add to cart"
+                                                            onclick="addToCart('<%=bestSeller[i].product._id%>')"></a>
+                                                        <a href="" class="btn-product-icon btn-wishlist w-icon-heart"
+                                                            title="Add to wishlist"
+                                                            onclick="addToWishlist('<%=bestSeller[i].product._id%>')"></a>
+                                                        <a href="/buy-now/<%=bestSeller[i].product._id%>"
+                                                            class="btn-product-icon w-icon-check" title="Buy Now"></a>
+                                                    </div>
+                                                    <%}%>
+                                            <div class="card-body">
+                                                <p class="card-text text-center"><a
+                                                        href="/product/<%=bestSeller[i].product._id%>">
+                                                        <%=bestSeller[i].product.productName%>
+                                                    </a><br>₹<%=bestSeller[i].product.price%>
+                                                </p>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <%}%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of .category-section top-category -->
+
+            <div class="container">
+                <!-- <h2 class="title justify-content-center ls-normal mb-4 mt-4 pt-1 appear-animate">Popular Departments
+                </h2> -->
+                <div class="tab tab-nav-boxed tab-nav-outline appear-animate mt-4">
+                    <ul class="nav nav-tabs justify-content-center" role="tablist">
+                        <li class="nav-item mr-2 mb-2">
+                            <a class="nav-link active br-sm font-size-md ls-normal" href="#tab1-1">New arrivals</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End of Tab -->
+                <div class="tab-content product-wrapper appear-animate">
+                    <div class="tab-pane active pt-4" id="tab1-1">
+                        <div class="row cols-xl-5 cols-md-4 cols-sm-3 cols-2">
+                            <%for(var i=0; i<newProducts.length;i++){%>
+                                <div class="product-wrap">
+                                    <div class="product text-center">
+                                        <figure class="product-media">
+                                            <a href="/product/<%=newProducts[i]._id%>">
+                                                <img src="/product-image/<%=newProducts[i]._id%>_1.jpg" alt="Product"
+                                                    width="300" height="338" />
+                                                <img src="/product-image/<%=newProducts[i]._id%>_1.jpg" alt="Product"
+                                                    width="300" height="338" />
+                                            </a>
+                                            <%if(logged){%>
+                                                <div class="product-action-vertical">
+                                                    <a href="" class="btn-product-icon btn-cart w-icon-cart"
+                                                        title="Add to cart"
+                                                        onclick="addToCart('<%=newProducts[i]._id%>')"></a>
+                                                    <a href="" class="btn-product-icon btn-wishlist w-icon-heart"
+                                                        title="Add to wishlist"
+                                                        onclick="addToWishlist('<%=newProducts[i]._id%>')"></a>
+                                                    <a href="/buy-now/<%=newProducts[i]._id%>"
+                                                        class="btn-product-icon w-icon-check" title="Buy Now"></a>
+                                                </div>
+                                                <%}%>
+                                                    <%if(newProducts[i].discount>0 || newProducts[i].catDiscount>0){%>
+                                                        <div class="product-label-group">
+                                                            <%if(newProducts[i].discount>newProducts[i].catDiscount){%>
+                                                                <label class="product-label label-discount">
+                                                                    <%=newProducts[i].discount%>% Off
+                                                                </label>
+                                                                <%}else{%>
+                                                                    <label class="product-label label-discount">
+                                                                        <%=newProducts[i].catDiscount%>% Off
+                                                                    </label>
+                                                                    <%}%>
+                                                        </div>
+                                                        <%}%>
+                                        </figure>
+                                        <div class="product-details">
+                                            <h4 class="product-name"><a href="/product/<%=newProducts[i]._id%>">
+                                                    <%=newProducts[i].productName%>
+                                                </a></h4>
+                                            <!-- <div class="ratings-container">
+                                            <div class="ratings-full">
+                                                <span class="ratings" style="width: 60%;"></span>
+                                                <span class="tooltiptext tooltip-top"></span>
+                                            </div>
+                                            <a href="product-default.html" class="rating-reviews">(1 Reviews)</a>
+                                        </div> -->
+                                            <div class="product-price">
+                                                <%if(newProducts[i].discount>0 || newProducts[i].catDiscount>0){%>
+                                                    <%if(newProducts[i].discount>newProducts[i].catDiscount){%>
+                                                        <ins class="new-price">₹
+                                                            <%=Math.round(newProducts[i].price*0.01*(100-newProducts[i].discount))%>
+                                                                </ins>
+                                                        <h6 style="opacity: 0.8;">(<del>₹<%=newProducts[i].price%>
+                                                                    </del>)</h6>
+
+                                                        <%}else{%>
+                                                            <ins class="new-price">₹
+                                                                <%=Math.round(newProducts[i].price*0.01*(100-newProducts[i].catDiscount))%>
+                                                                    </ins>
+                                                            <h6 style="opacity: 0.8;">(<del>₹<%=newProducts[i].price%>
+                                                                        </del>)</h6>
+                                                            <%}%>
+
+
+                                                                <%}else{%>
+                                                                    <ins class="new-price">₹<%=newProducts[i].price%>
+                                                                            </ins>
+                                                                    <%}%>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                        </div>
+                    </div>
+                    <!-- End of Tab Pane -->
+
+                    <!-- End of Tab Pane -->
+
+                    <!-- End of Tab Pane -->
+                </div>
+                <!-- End of Tab Content -->
+
+
+                <!-- End of Category Cosmetic Lifestyle -->
+
+
+                <!-- End of Product Wrapper 1 -->
+
+
+                <!-- End of Product Wrapper 1 -->
+
+                <!-- <div class="banner banner-fashion appear-animate br-sm mb-9" style="background-image: url(assets/images/demos/demo1/banners/4.jpg);
+                    background-color: #383839;">
+                    <div class="banner-content align-items-center">
+                        <div class="content-left d-flex align-items-center mb-3">
+                            <div class="banner-price-info font-weight-bolder text-secondary text-uppercase lh-1 ls-25">
+                                25
+                                <sup class="font-weight-bold">%</sup><sub class="font-weight-bold ls-25">Off</sub>
+                            </div>
+                            <hr class="banner-divider bg-white mt-0 mb-0 mr-8">
+                        </div>
+                        <div class="content-right d-flex align-items-center flex-1 flex-wrap">
+                            <div class="banner-info mb-0 mr-auto pr-4 mb-3">
+                                <h3 class="banner-title text-white font-weight-bolder text-uppercase ls-25">For Today's
+                                    Fashion</h3>
+                                <p class="text-white mb-0">Use code
+                                    <span
+                                        class="text-dark bg-white font-weight-bold ls-50 pl-1 pr-1 d-inline-block">Black
+                                        <strong>12345</strong></span> to get best offer.</p>
+                            </div>
+                            <a href="shop-banner-sidebar.html"
+                                class="btn btn-white btn-outline btn-rounded btn-icon-right mb-3">Shop Now<i
+                                    class="w-icon-long-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- End of Banner Fashion -->
+
+
+                <!-- End of Product Wrapper 1 -->
+
+
+                <!-- End of Brands Wrapper -->
+
+
+                <!-- Post Wrapper -->
+
+
+                <!-- End of Reviewed Producs -->
+            </div>
+            <!--End of Catainer -->
+        </main>
+        <!-- End of Main -->
+
+        <!-- Start of Footer -->
+        <footer class="footer appear-animate" data-animation-options="{
+            'name': 'fadeIn'
+        }">
+            <div class="footer-newsletter bg-primary">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="icon-box-content text-center col-12">
+
+                            <h5 style="color: #fff;">© Copyright . All Rights Reserved</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Page-wrapper-->
+
+    <!-- Start of Sticky Footer -->
+    <div class="sticky-footer sticky-content fix-bottom">
+        <a href="/" class="sticky-link active">
+            <i class="w-icon-home"></i>
+            <p>Home</p>
+        </a>
+        <a href="/shop" class="sticky-link">
+            <i class="w-icon-category"></i>
+            <p>Shop</p>
+        </a>
+        <% if(logged){%>
+        <a href="/account" class="sticky-link">
+            <i class="w-icon-account"></i>
+            <p>Account</p>
+        </a>
+        <a href="/cart" class="sticky-link">
+            <i class="w-icon-cart"></i>
+            <p>Cart</p>
+        </a>
+        <a href="/user/wishlist" class="sticky-link">
+            <i class="w-icon-heart"></i>
+            <p>Wishlist</p>
+        </a>
+        <%}%>
+    </div>
+    <!-- End of Sticky Footer -->
+
+    <!-- Start of Scroll Top -->
+    <a id="scroll-top" class="scroll-top" href="#top" title="Top" role="button"> <i class="w-icon-angle-up"></i> <svg
+            version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70">
+            <circle id="progress-indicator" fill="transparent" stroke="#000000" stroke-miterlimit="10" cx="35" cy="35"
+                r="34" style="stroke-dasharray: 16.4198, 400;"></circle>
+        </svg> </a>
+    <!-- End of Scroll Top -->
+
+    <!-- Start of Mobile Menu -->
+    <div class="mobile-menu-wrapper">
+        <div class="mobile-menu-overlay"></div>
+        <!-- End of .mobile-menu-overlay -->
+
+        <a href="#" class="mobile-menu-close"><i class="close-icon"></i></a>
+        <!-- End of .mobile-menu-close -->
+
+        <div class="mobile-menu-container scrollable">
+            <form action="/product_search" method="post" class="input-wrapper">
+                <input type="text" class="form-control" name="search" autocomplete="off" placeholder="Search"
+                    required />
+                <button class="btn btn-search" type="submit">
+                    <i class="w-icon-search"></i>
+                </button>
+            </form>
+            <!-- End of Search Form -->
+            <div class="tab">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a href="#main-menu" class="nav-link active">Main Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#categories" class="nav-link">Categories</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="main-menu">
+                    <ul class="mobile-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/logout">logout</a></li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="categories">
+                    <ul class="mobile-menu">
+                        <%for(var i=0; i<category.length;i++){%>
+                            <li>
+                                <a href="/display-category?categoryName=<%=category[i].categoryName%>">
+                                    <%=category[i].categoryName.toUpperCase()%>
+                                </a>
+                            </li>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Mobile Menu -->
+
+    <!-- Start of Newsletter popup -->
+    <div class="newsletter-popup mfp-hide">
+        <div class="newsletter-content">
+            <h4 class="text-uppercase font-weight-normal ls-25">Get Up to<span class="text-primary">25% Off</span></h4>
+            <h2 class="ls-25">Sign up to Wolmart</h2>
+            <p class="text-light ls-10">Subscribe to the Wolmart market newsletter to
+                receive updates on special offers.</p>
+            <form action="#" method="get" class="input-wrapper input-wrapper-inline input-wrapper-round">
+                <input type="email" class="form-control email font-size-md" name="email" id="email2"
+                    placeholder="Your email address" required="">
+                <button class="btn btn-dark" type="submit">SUBMIT</button>
+            </form>
+            <div class="form-checkbox d-flex align-items-center">
+                <input type="checkbox" class="custom-checkbox" id="hide-newsletter-popup" name="hide-newsletter-popup"
+                    required="">
+                <label for="hide-newsletter-popup" class="font-size-sm text-light">Don't show this popup again.</label>
+            </div>
+        </div>
+    </div>
+    <!-- End of Newsletter popup -->
+
+    <!-- Start of Quick View -->
+    
+    <!-- End of Quick view -->
+
+    <!-- Plugin JS File -->
+    <script src="/user/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/user/assets/vendor/jquery.plugin/jquery.plugin.min.js"></script>
+    <script src="/user/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="/user/assets/vendor/zoom/jquery.zoom.js"></script>
+    <script src="/user/assets/vendor/jquery.countdown/jquery.countdown.min.js"></script>
+    <script src="/user/assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/user/assets/vendor/skrollr/skrollr.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="/user/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS -->
+    <script src="/user/assets/js/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        function addToCart(proId) {
+
+            $.ajax({
+                url: "/addToCart/" + proId,
+                method: 'get',
+                success: (response) => {
+                    document.getElementById('cartCount').innerHTML = response
+                }
+            })
+        }
+
+        function addToWishlist(proId) {
+
+            $.ajax({
+                url: '/user/wishlist-add/' + proId,
+                method: 'get',
+                success: (response) => {
+                    document.getElementById('wishlistCount').innerHTML = response
+                }
+            })
+        }
+    </script>
+</body>
+
+
+<!-- Mirrored from portotheme.com/html/wolmart/demo1.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 05 Nov 2021 05:02:17 GMT -->
+
+</html>
