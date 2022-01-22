@@ -10,8 +10,7 @@ const cookieParser = require('cookie-parser');
 const PRODUCT = require('./models/register-product')
 const fileUpload = require('express-fileupload')
 
-app.set('view engine','ejs')
-app.use(express.static('public'))
+
 app.use(fileUpload())
 app.use(cookieParser())
 app.use(express.json())
