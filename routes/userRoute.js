@@ -13,17 +13,15 @@ const order_HELPER = require('../helpers/order-helper')
 const BANNER = require('../models/register-banner')
 var ObjectId = require('mongoose').Types.ObjectId
 const categoryOfferHelper = require("../helpers/category-offer-helper")
-// const TWILIO_ACCOUNT_SID='AC136eaec376c4e8c88e5c58864b595c8a'
-// const TWILIO_AUTH_TOKEN='53d4dd367a25ab8f53d0715040fff0aa'
-const accountSid = 'AC136eaec376c4e8c88e5c58864b595c8a'
-const authToken = '53d4dd367a25ab8f53d0715040fff0aa'
+const accountSid = 'AC136eaec376c45c58864b595c8a'
+const authToken = '53d4dd367a253d0715040fff0aa'
 const client = require('twilio')(accountSid, authToken);
 var paypal = require('paypal-rest-sdk');
 
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
-    'client_id': 'AfZPjGuAXI1wuVDp12tYg5hi8tNpSn7kQf5bARohaewBvZCHRTXSUJZecRne18dbN9lBnB8opyeK3fha',
-    'client_secret': 'ENR9AeTwVU12otT9D7sDegqKrqjd-d7mG-kYQvw-B7VxNe-6cIvmf-8mraJG9lrDu97P08c5QgzQWvI3'
+    'client_id': 'AfZPjGuAXI1wuVDp12tYg5hi8tNpSn7kQf5bARohaewBvZ9lBnB8opyeK3fha',
+    'client_secret': 'ENR9AeTwVU12otT9D7sDegqKrqjd-d7mG-kYQvw-B7VxNe-6clrDu97P08c5QgzQWvI3'
   });
 
 
